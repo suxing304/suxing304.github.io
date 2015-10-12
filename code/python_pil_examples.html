@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="python, PIL">
+        <meta name="description" content="PIL(Python Imaging Library)是Python的标准图像库，下面是一个生成文本图像的简单例子。 开发环境 Require: Python 2.6 or Python 2.7 arrial.ttf 字体文件 代码 lan.txt 定义生成图片时的文本，每行生成一张图片。 bash c cpp csharp css diff erlang html ini java javascript jquery lisp lua make perl php powershell python ruby scheme sql tcl text vb vim xml ...">
+        <title>Python PIL 例子 - sssss</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/font-icons/style.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/niu2.min.css" type="text/css" />
+        <link rel="canonical" href="http://suxing304.github.io/code/python_pil_examples.html" />
+        <script type="text/javascript">window.onload=function(){};</script>
+        <!--[if lt IE 9]>
+            <script src="http://suxing304.github.io/theme/js/html5shiv.js"></script>
+            <script src="http://suxing304.github.io/theme/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body> 
+        <div id="body-header">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://suxing304.github.io">
+                            <i class="icon-home"></i>sssss
+                        </a>
+                    </div>
+                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/about.html" title="about me">
+                                <i class="icon-anchor"></i>关于</a>
+                            </li>
+                            <li><a href="/agreement.html" title="agreement">
+                                <i class="icon-exclamation-circle"></i>使用协议</a>
+                            </li>
+                            <li><a href="/my_projects.html" title="my projects">
+                                <i class="icon-rocket"></i>项目</a>
+                            </li>
+                            <li><a href="/tag/" title="tags">
+                                <i class="icon-tag"></i>标签</a>
+                            </li>
+                        <!-- category dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-folder-open"></i>分类<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="http://suxing304.github.io/code/index.html">
+                                      <i class="icon-eyedropper"></i>代码
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/collection/index.html">
+                                      <i class="icon-briefcase"></i>搜藏
+                                      (18)</a></li>
+                               <li><a href="http://suxing304.github.io/essay/index.html">
+                                      <i class="icon-leaf"></i>随笔
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/life/index.html">
+                                      <i class="icon-coffee"></i>日常
+                                      (16)</a></li>
+                               <li><a href="http://suxing304.github.io/research/index.html">
+                                      <i class="icon-flask"></i>研究
+                                      (5)</a></li>
+                           </ul>
+                        </li>
+                        <!--  self defined dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                               <i class="icon-archive"></i>存档<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="/archives.html" title="archives order by publish time">
+                                 <i class="icon-calendar"></i>存档 (按发布时间)</a>
+                               </li>
+                               <li><a href="/archives_updatedate.html" title="archives order by modify time">
+                                 <i class="icon-pencil"></i>存档 (按修改时间)</a>
+                               </li>
+                           </ul>
+                        </li>
+                        </ul>
+                        
+                        <!-- right nav bar -->
+                        <ul class="nav navbar-nav navbar-right">
+                        <!-- google custom search -->
+                       </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div id="body-content">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 id="content-heading">Python PIL 例子</h1>
+            </div>
+            <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
+                <div id="niu2-main-content">
+                    <p>PIL(Python Imaging Library)是Python的标准图像库，下面是一个生成文本图像的简单例子。</p>
+<h2 id="29c80d">开发环境</h2>
+<p>Require:</p>
+<ul>
+<li>Python 2.6 or Python 2.7</li>
+<li>arrial.ttf 字体文件</li>
+</ul>
+<h2 id="06e004">代码</h2>
+<h3 id="b74125">lan.txt</h3>
+<p>定义生成图片时的文本，每行生成一张图片。</p>
+<div class="codehilite"><pre>bash
+c
+cpp
+csharp
+css
+diff
+erlang
+html
+ini
+java
+javascript
+jquery
+lisp
+lua
+make
+perl
+php
+powershell
+python
+ruby
+scheme
+sql
+tcl
+text
+vb
+vim
+xml
+vim
+conf
+</pre></div>
+<h3 id="b64997">genPics.py</h3>
+<p>生成图像的主程序文件，读取lan.txt并将每行的数据使用arrial.ttf字体生成一张png图片。</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">Image</span><span class="o">,</span> <span class="nn">ImageFont</span><span class="o">,</span> <span class="nn">ImageDraw</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">picDir</span> <span class="o">=</span> <span class="s">"16pics"</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">picDir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">picDir</span><span class="p">)</span>
+
+<span class="c"># read language names</span>
+<span class="n">lanNames</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"lan.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lanNames</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="c"># width and height of each picture</span>
+<span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">30</span>
+<span class="c"># font settings</span>
+<span class="n">fontPath</span> <span class="o">=</span> <span class="s">"arial.ttf"</span>
+<span class="n">fontSize</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">font</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="n">fontPath</span><span class="p">,</span> <span class="n">fontSize</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">lanNames</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s">"RGB"</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="s">"white"</span><span class="p">)</span>
+    <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">fontWidth</span><span class="p">,</span> <span class="n">fontHeight</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">(((</span><span class="n">width</span><span class="o">-</span><span class="n">fontWidth</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="n">height</span><span class="o">-</span><span class="n">fontHeight</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s">"black"</span><span class="p">)</span>
+    <span class="n">imageLoc</span> <span class="o">=</span> <span class="s">"</span><span class="si">%s</span><span class="s">/syntax_</span><span class="si">%s</span><span class="s">.png"</span> <span class="o">%</span> <span class="p">(</span><span class="n">picDir</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">imageLoc</span><span class="p">,</span> <span class="s">"png"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Generate </span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="n">imageLoc</span><span class="p">)</span>
+</pre></div>
+<h2 id="81f5d5">阅读资料</h2>
+<ul>
+<li><a href="http://effbot.org/imagingbook/">PIL Tutorial</a></li>
+<li><a href="http://www.pythonware.com/library/pil/handbook/index.htm">PIL文档</a></li>
+</ul>
+                </div>
+                <div id="content-comments">
+                </div>
+
+            </div>
+            <div class="niu2-right-container col-md-2">
+                <div id="niu2-sidebar-meta" class="niu2-sidebar">
+                    <div class="niu2-sidebar-label"><i class="icon-calendar"></i>发布时间:</div>
+                    <div class="niu2-sidebar-value">2013-08-08 12:14</div>
+                    <div class="niu2-sidebar-label"><i class="icon-eyedropper"></i>分类:</div>
+                    <div class="niu2-sidebar-value"><a href="http://suxing304.github.io/code/index.html">代码</a></div>
+                    <div class="niu2-sidebar-label"><i class="icon-tag"></i>标签:</div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/python.html">python</a><sup>4</sup></div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/pil.html">PIL</a><sup>1</sup></div>
+                </div>
+
+                <div id="niu2-sidebar-toc" class="niu2-sidebar" data-status="closed">
+                    <div class="niu2-sidebar-label">
+                        <i id="niu2-sidebar-toc-ctrl" class="icon-open-tocs"></i>目录
+                    </div>
+                    <ol id="niu2-sidebar-toc-list">
+                        <li><a href="#content-heading">Python PIL 例子</a></li>
+                        <li><a href='#29c80d'>开发环境</a></li><li><a href='#06e004'>代码</a><ol><li><a href='#b74125'>lan.txt</a></li><li><a href='#b64997'>genPics.py</a></li></ol></li><li><a href='#81f5d5'>阅读资料</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div id="niu2-toolbar">
+                <ul class="list-unstyled">
+                    <li><a id="niu2-toolbar-ctrlsidebar" href="#" title="隐藏侧边栏"><i class="icon-3x icon-hide-sidebar"></i></a></li>
+                </ul>
+                <div id="niu2-toolbar-showsidebar" data-title="显示侧边栏"></div>
+                <div id="niu2-toolbar-github" data-repo=""></div>
+                <div id="niu2-toolbar-bitbucket" data-repo=""></div>
+            </div>
+            <div id="niu2-toc" data-style="fixed"></div>
+        </div>
+
+        <div class="niu2-footer">
+            <div id="body-footer" class="col-md-6 col-md-offset-2">
+                <hr/>
+                <p>
+                    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
+                    <a href="https://github.com/mawenbao/niu-x2-sidebar">theme</a> built with <a href="https://github.com/twbs/bootstrap">Bootstrap3</a>
+                    by <a href="https://blog.mawenbao.com">Ma Wenbao</a>, icons by 
+                    <a href="https://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
+                </p>
+                <p>
+                    ©
+                            2009-2014
+                    <a class="niu2-footer-link" href="http://suxing304.github.io">Su</a>
+                    /                         <a class="niu2-footer-link" href="/about.html" title="about me">关于</a>
+                    /                         <a class="niu2-footer-link" href="/agreement.html" title="terms, license and privacy etc.">使用协议</a>
+                    /                         <a class="niu2-footer-link" href="http://www.miitbeian.gov.cn/" title="备案号">沪ICP备14018579号-1</a>
+                </p>
+                <p class="niu2-icons">
+                    <a class="niu2-footer-icon" href="/my_gnupg.html" title="my public key">
+                        <i class="icon-key icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="mailto: mwenbao@gmail.com" title="my email address">
+                        <i class="icon-envelope-o icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="http://github.com/mawenbao" title="my github page">
+                        <i class="icon-github-alt icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="/feed.xml" title="subscribe my blog">
+                        <i class="icon-rss icon-lg"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div id="niu2-pygments" data-theme="github"></div>
+        <div id="niu2-lazy-load" data-loading-txt="orz 努力加载中" data-loading-icon="icon-spin icon-spinner2"></div>
+        <div id="niu2-toolbar-load" data-loading-icon="icon-spin icon-4x icon-spinner9"></div>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/niu2.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            onContentLoaded();
+        </script>
+    </body>
+</html>

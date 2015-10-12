@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="备案, VPS">
+        <meta name="description" content="基于种种靠谱的不靠谱的考虑，近期计划将博客迁到国内的阿里云主机，目前正在筹备备案的事情。。。 最近一段时间，博客访问可能不太稳定，也可能暂时停止对外访问，抱歉。 人在江湖混，总归是要妥协一些事情的。 阿里云服务器配置 依然使用最便宜的服务器，1核心512M内存1Mbps带宽，每月55RMB。阿里云上的的debian系统只提供已经被淘汰的debian6，参考linode上的一篇文章升级到debian7，然后参考digitalocean上的一篇文章创建交换空间。最后设置下服务器的安全策略。 创建交换空间的时候发现磁盘写入速度只有30M/s左右，应该是机械硬盘，digitalocean上大概是150M/s，速度差距很大的说。不过网速还可以的说，系统升级不用10分钟就结束了。CPU和digitalocean的差距应该不大，编译博客的时间比原来慢两三秒。 2014-05-20 中午在阿里云提交了备案初审的申请，下午就通过了，接下来是最麻烦的照相部分。上海的拍照点很少，还都是工作时间才可以拍，果断申请幕布自己拍。 阿里云发了顺丰快递，估计明天幕布就能到。 2014-05-21 上班路上顺便把信息安全管理协议和核验单的原件寄到阿里云的洛阳办事处，用了EMS，估计要两三天才能到，又贵又慢，只为图方便。今天顺丰快递没把幕布送到，网上查了下，包裹还在北京没动 ...">
+        <title>计划将博客迁回国内 - sssss</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/font-icons/style.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/niu2.min.css" type="text/css" />
+        <link rel="canonical" href="http://suxing304.github.io/life/moving-blog-back-to-china.html" />
+        <script type="text/javascript">window.onload=function(){};</script>
+        <!--[if lt IE 9]>
+            <script src="http://suxing304.github.io/theme/js/html5shiv.js"></script>
+            <script src="http://suxing304.github.io/theme/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body> 
+        <div id="body-header">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://suxing304.github.io">
+                            <i class="icon-home"></i>sssss
+                        </a>
+                    </div>
+                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/about.html" title="about me">
+                                <i class="icon-anchor"></i>关于</a>
+                            </li>
+                            <li><a href="/agreement.html" title="agreement">
+                                <i class="icon-exclamation-circle"></i>使用协议</a>
+                            </li>
+                            <li><a href="/my_projects.html" title="my projects">
+                                <i class="icon-rocket"></i>项目</a>
+                            </li>
+                            <li><a href="/tag/" title="tags">
+                                <i class="icon-tag"></i>标签</a>
+                            </li>
+                        <!-- category dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-folder-open"></i>分类<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="http://suxing304.github.io/code/index.html">
+                                      <i class="icon-eyedropper"></i>代码
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/collection/index.html">
+                                      <i class="icon-briefcase"></i>搜藏
+                                      (18)</a></li>
+                               <li><a href="http://suxing304.github.io/essay/index.html">
+                                      <i class="icon-leaf"></i>随笔
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/life/index.html">
+                                      <i class="icon-coffee"></i>日常
+                                      (16)</a></li>
+                               <li><a href="http://suxing304.github.io/research/index.html">
+                                      <i class="icon-flask"></i>研究
+                                      (5)</a></li>
+                           </ul>
+                        </li>
+                        <!--  self defined dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                               <i class="icon-archive"></i>存档<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="/archives.html" title="archives order by publish time">
+                                 <i class="icon-calendar"></i>存档 (按发布时间)</a>
+                               </li>
+                               <li><a href="/archives_updatedate.html" title="archives order by modify time">
+                                 <i class="icon-pencil"></i>存档 (按修改时间)</a>
+                               </li>
+                           </ul>
+                        </li>
+                        </ul>
+                        
+                        <!-- right nav bar -->
+                        <ul class="nav navbar-nav navbar-right">
+                        <!-- google custom search -->
+                       </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div id="body-content">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 id="content-heading">计划将博客迁回国内</h1>
+            </div>
+            <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
+                <div id="niu2-main-content">
+                    <p>基于种种靠谱的不靠谱的考虑，近期计划将博客迁到国内的阿里云主机，目前正在筹备备案的事情。。。</p>
+<p>最近一段时间，博客访问可能不太稳定，也可能暂时停止对外访问，抱歉。</p>
+<p>人在江湖混，总归是要妥协一些事情的。</p>
+<h2 id="9edd20">阿里云服务器配置</h2>
+<p>依然使用最便宜的服务器，1核心512M内存1Mbps带宽，每月55RMB。阿里云上的的debian系统只提供已经被淘汰的debian6，参考linode上的一篇<a href="https://library.linode.com/upgrading/upgrade-to-debian-7-wheezy">文章</a>升级到debian7，然后参考digitalocean上的一篇<a href="https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04">文章</a>创建交换空间。最后设置下服务器的<a href="/note/linux_host-security.html">安全策略</a>。</p>
+<p>创建交换空间的时候发现磁盘写入速度只有30M/s左右，应该是机械硬盘，digitalocean上大概是150M/s，速度差距很大的说。不过网速还可以的说，系统升级不用10分钟就结束了。CPU和digitalocean的差距应该不大，编译博客的时间比原来慢两三秒。</p>
+<h2 id="ae2b24">2014-05-20</h2>
+<p>中午在阿里云提交了备案初审的申请，下午就通过了，接下来是最麻烦的照相部分。上海的拍照点很少，还都是工作时间才可以拍，果断申请幕布自己拍。</p>
+<p>阿里云发了顺丰快递，估计明天幕布就能到。</p>
+<h2 id="e369b8">2014-05-21</h2>
+<p>上班路上顺便把信息安全管理协议和核验单的原件寄到阿里云的洛阳办事处，用了EMS，估计要两三天才能到，又贵又慢，只为图方便。今天顺丰快递没把幕布送到，网上查了下，包裹还在北京没动。客服妹子耐心委婉的解释说飞机出了问题，估计得明天了。</p>
+<p>阿里云的服务器用了两天，最大的感受就是，ssh登录后，不管是运行命令还是编辑文件，和在本地机器上没有什么区别，毫无延迟的感觉。ping了下，平均延迟十几毫秒，丢包率为0，这就是墙内的好处了吧。</p>
+<p>阿里云的硬件不比国外的linode和digitalocean，但是客服还是挺到位的，发ticket和论坛发帖，响应都挺及时。另外，服务器的套餐可以随时升级，这点也可以点个赞。</p>
+<h2 id="f714b0">2014-05-22</h2>
+<p>顺丰在延误了一天之后，终于把拍照用的幕布送到了，晚上在家里搞了接近一个时终于把照片拍了出来。还好RX100有个识别人脸并自动拍摄的功能，不然估计现在都搞不定。另外照片拍好后还要裁剪成800x600像素，win7自带的画图程序不太好用，ps又不会用，最后在网上查了下，用美图秀秀不到五分钟搞定了。。。照片提交之后还要等待阿里云审核，如果审核不过，我打算直接请假去指定地点拍了，一个人搞自拍真心太累。</p>
+<h2 id="17c975">2014-05-23</h2>
+<p>审核资料已经寄到且通过了阿里云的审核，照片也审核通过，接下来就等通管局了。</p>
+<p>还没下班就收到通管局的短信说备案通过了，原本还打算要坚持久战来着，没想到不用两个小时就结束战斗了。这边的办事效率出奇的高啊。</p>
+<p>不知是不是我使用方法不对，<del>感觉阿里云的cdn服务就一大坑</del>，是我太白痴配置错了晕。</p>
+<h2 id="925f38">2014-05-27</h2>
+<p><del>阿里云的cdn目前不支持CORS(跨域资源共享)配置</del>，具体问题就是如果把font-awesome单独部署到cdn子域上，firefox和ie无法加载字体文件，报错</p>
+<div class="codehilite"><pre>CSS3117: @font-face 跨源请求失败
+</pre></div>
+<p>解决办法就是用别家的cdn，或者把整个博客放到cdn上。</p>
+<p>又白痴了，跨域问题可以通过白名单来解决，不过要等cdn的缓存刷新后才有效。</p>
+<h2 id="ec3561">2014-05-28</h2>
+<p>抽空用<a href="https://code.google.com/p/byte-unixbench/">UnixBench</a>测试了下系统性能，综合得分1475.7，详细报告<a href="/static/plain/aliyun-1cpu512ram-unixbench-report-20140528.txt">此</a>和<a href="/static/plain/aliyun-1cpu512ram-unixbench-report-20140529.txt">此</a>，和之前用的同级别的digitalocean vps差不多，do的报告在<a href="/static/plain/digitalocean-512m-unixbench-report-20140313.txt">此</a>。</p>
+                </div>
+                <div id="content-comments">
+                </div>
+
+            </div>
+            <div class="niu2-right-container col-md-2">
+                <div id="niu2-sidebar-meta" class="niu2-sidebar">
+                    <div class="niu2-sidebar-label"><i class="icon-calendar"></i>发布时间:</div>
+                    <div class="niu2-sidebar-value">2014-05-20 11:28</div>
+                    <div class="niu2-sidebar-label"><i class="icon-pencil" style="font-size: 1.05em;"></i>最后修改:</div>
+                    <div class="niu2-sidebar-value">2014-05-28 12:50</div>
+                    <div class="niu2-sidebar-label"><i class="icon-coffee"></i>分类:</div>
+                    <div class="niu2-sidebar-value"><a href="http://suxing304.github.io/life/index.html">日常</a></div>
+                    <div class="niu2-sidebar-label"><i class="icon-tag"></i>标签:</div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/bei-an.html">备案</a><sup>1</sup></div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/vps.html">VPS</a><sup>3</sup></div>
+                </div>
+
+                <div id="niu2-sidebar-toc" class="niu2-sidebar" data-status="closed">
+                    <div class="niu2-sidebar-label">
+                        <i id="niu2-sidebar-toc-ctrl" class="icon-open-tocs"></i>目录
+                    </div>
+                    <ol id="niu2-sidebar-toc-list">
+                        <li><a href="#content-heading">计划将博客迁回国内</a></li>
+                        <li><a href='#9edd20'>阿里云服务器配置</a></li><li><a href='#ae2b24'>2014-05-20</a></li><li><a href='#e369b8'>2014-05-21</a></li><li><a href='#f714b0'>2014-05-22</a></li><li><a href='#17c975'>2014-05-23</a></li><li><a href='#925f38'>2014-05-27</a></li><li><a href='#ec3561'>2014-05-28</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div id="niu2-toolbar">
+                <ul class="list-unstyled">
+                    <li><a id="niu2-toolbar-ctrlsidebar" href="#" title="隐藏侧边栏"><i class="icon-3x icon-hide-sidebar"></i></a></li>
+                </ul>
+                <div id="niu2-toolbar-showsidebar" data-title="显示侧边栏"></div>
+                <div id="niu2-toolbar-github" data-repo=""></div>
+                <div id="niu2-toolbar-bitbucket" data-repo=""></div>
+            </div>
+            <div id="niu2-toc" data-style="fixed"></div>
+        </div>
+
+        <div class="niu2-footer">
+            <div id="body-footer" class="col-md-6 col-md-offset-2">
+                <hr/>
+                <p>
+                    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
+                    <a href="https://github.com/mawenbao/niu-x2-sidebar">theme</a> built with <a href="https://github.com/twbs/bootstrap">Bootstrap3</a>
+                    by <a href="https://blog.mawenbao.com">Ma Wenbao</a>, icons by 
+                    <a href="https://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
+                </p>
+                <p>
+                    ©
+                            2009-2014
+                    <a class="niu2-footer-link" href="http://suxing304.github.io">Su</a>
+                    /                         <a class="niu2-footer-link" href="/about.html" title="about me">关于</a>
+                    /                         <a class="niu2-footer-link" href="/agreement.html" title="terms, license and privacy etc.">使用协议</a>
+                    /                         <a class="niu2-footer-link" href="http://www.miitbeian.gov.cn/" title="备案号">沪ICP备14018579号-1</a>
+                </p>
+                <p class="niu2-icons">
+                    <a class="niu2-footer-icon" href="/my_gnupg.html" title="my public key">
+                        <i class="icon-key icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="mailto: mwenbao@gmail.com" title="my email address">
+                        <i class="icon-envelope-o icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="http://github.com/mawenbao" title="my github page">
+                        <i class="icon-github-alt icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="/feed.xml" title="subscribe my blog">
+                        <i class="icon-rss icon-lg"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div id="niu2-pygments" data-theme="github"></div>
+        <div id="niu2-lazy-load" data-loading-txt="orz 努力加载中" data-loading-icon="icon-spin icon-spinner2"></div>
+        <div id="niu2-toolbar-load" data-loading-icon="icon-spin icon-4x icon-spinner9"></div>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/niu2.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            onContentLoaded();
+        </script>
+    </body>
+</html>

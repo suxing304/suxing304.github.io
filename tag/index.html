@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>标签 - sssss</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/font-icons/style.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/niu2.min.css" type="text/css" />
+        <script type="text/javascript">window.onload=function(){};</script>
+        <!--[if lt IE 9]>
+            <script src="http://suxing304.github.io/theme/js/html5shiv.js"></script>
+            <script src="http://suxing304.github.io/theme/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body> 
+        <div id="body-header">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://suxing304.github.io">
+                            <i class="icon-home"></i>sssss
+                        </a>
+                    </div>
+                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/about.html" title="about me">
+                                <i class="icon-anchor"></i>关于</a>
+                            </li>
+                            <li><a href="/agreement.html" title="agreement">
+                                <i class="icon-exclamation-circle"></i>使用协议</a>
+                            </li>
+                            <li><a href="/my_projects.html" title="my projects">
+                                <i class="icon-rocket"></i>项目</a>
+                            </li>
+                            <li><a href="/tag/" title="tags">
+                                <i class="icon-tag"></i>标签</a>
+                            </li>
+                        <!-- category dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-folder-open"></i>分类<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="http://suxing304.github.io/code/index.html">
+                                      <i class="icon-eyedropper"></i>代码
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/collection/index.html">
+                                      <i class="icon-briefcase"></i>搜藏
+                                      (18)</a></li>
+                               <li><a href="http://suxing304.github.io/essay/index.html">
+                                      <i class="icon-leaf"></i>随笔
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/life/index.html">
+                                      <i class="icon-coffee"></i>日常
+                                      (16)</a></li>
+                               <li><a href="http://suxing304.github.io/research/index.html">
+                                      <i class="icon-flask"></i>研究
+                                      (5)</a></li>
+                           </ul>
+                        </li>
+                        <!--  self defined dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                               <i class="icon-archive"></i>存档<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="/archives.html" title="archives order by publish time">
+                                 <i class="icon-calendar"></i>存档 (按发布时间)</a>
+                               </li>
+                               <li><a href="/archives_updatedate.html" title="archives order by modify time">
+                                 <i class="icon-pencil"></i>存档 (按修改时间)</a>
+                               </li>
+                           </ul>
+                        </li>
+                        </ul>
+                        
+                        <!-- right nav bar -->
+                        <ul class="nav navbar-nav navbar-right">
+                        <!-- google custom search -->
+                       </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div id="body-content">
+        <div class="col-md-8 col-md-offset-2">
+            <h1><i class="icon-tags"></i>标签</h1>
+            <input id="niu2-tagcloud-filter-input" type="text" placeholder="过滤标签，不妨试试[0-9]{3}"
+                   class="form-control pull-left" onkeyup="tag_filter()" autofocus>
+            <button class="btn btn-success niu2-button" 
+                    onclick="$('#niu2-tagcloud-filter-input').val('');tag_filter()">清空</button>
+            <div id="niu2-tagcloud">
+            </div>
+        </div>
+        </div>
+
+        <div class="niu2-footer">
+            <div id="body-footer" class="col-md-8 col-md-offset-2">
+                <hr/>
+                <p>
+                    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
+                    <a href="https://github.com/mawenbao/niu-x2-sidebar">theme</a> built with <a href="https://github.com/twbs/bootstrap">Bootstrap3</a>
+                    by <a href="https://blog.mawenbao.com">Ma Wenbao</a>, icons by 
+                    <a href="https://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
+                </p>
+                <p>
+                    ©
+                            2009-2014
+                    <a class="niu2-footer-link" href="http://suxing304.github.io">Su</a>
+                    /                         <a class="niu2-footer-link" href="/about.html" title="about me">关于</a>
+                    /                         <a class="niu2-footer-link" href="/agreement.html" title="terms, license and privacy etc.">使用协议</a>
+                    /                         <a class="niu2-footer-link" href="http://www.miitbeian.gov.cn/" title="备案号">沪ICP备14018579号-1</a>
+                </p>
+                <p class="niu2-icons">
+                    <a class="niu2-footer-icon" href="/my_gnupg.html" title="my public key">
+                        <i class="icon-key icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="mailto: mwenbao@gmail.com" title="my email address">
+                        <i class="icon-envelope-o icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="http://github.com/mawenbao" title="my github page">
+                        <i class="icon-github-alt icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="/feed.xml" title="subscribe my blog">
+                        <i class="icon-rss icon-lg"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div id="niu2-pygments" data-theme="github"></div>
+        <div id="niu2-lazy-load" data-loading-txt="orz 努力加载中" data-loading-icon="icon-spin icon-spinner2"></div>
+        <div id="niu2-toolbar-load" data-loading-icon="icon-spin icon-4x icon-spinner9"></div>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/niu2.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/tagcloud.min.js"></script>
+        <script type="text/javascript">
+            
+            var tc = TagCloud.create();
+            tc.add('feed', 1, 'http://suxing304.github.io/tag/feed.html', null);
+            tc.add('sigsegv', 1, 'http://suxing304.github.io/tag/sigsegv.html', null);
+            tc.add('grub4dos', 1, 'http://suxing304.github.io/tag/grub4dos.html', null);
+            tc.add('西游记', 1, 'http://suxing304.github.io/tag/xi-you-ji.html', null);
+            tc.add('绘画', 1, 'http://suxing304.github.io/tag/hui-hua.html', null);
+            tc.add('copyright', 1, 'http://suxing304.github.io/tag/copyright.html', null);
+            tc.add('总结', 3, 'http://suxing304.github.io/tag/zong-jie.html', null);
+            tc.add('grub2', 1, 'http://suxing304.github.io/tag/grub2.html', null);
+            tc.add('theme', 1, 'http://suxing304.github.io/tag/theme.html', null);
+            tc.add('404', 1, 'http://suxing304.github.io/tag/404.html', null);
+            tc.add('ocp', 1, 'http://suxing304.github.io/tag/ocp.html', null);
+            tc.add('基尼系数', 1, 'http://suxing304.github.io/tag/ji-ni-xi-shu.html', null);
+            tc.add('python', 4, 'http://suxing304.github.io/tag/python.html', null);
+            tc.add('音乐服务', 1, 'http://suxing304.github.io/tag/yin-le-fu-wu.html', null);
+            tc.add('jinja2', 1, 'http://suxing304.github.io/tag/jinja2.html', null);
+            tc.add('有趣', 2, 'http://suxing304.github.io/tag/you-qu.html', null);
+            tc.add('过年', 1, 'http://suxing304.github.io/tag/guo-nian.html', null);
+            tc.add('版权', 1, 'http://suxing304.github.io/tag/ban-quan.html', null);
+            tc.add('看病', 1, 'http://suxing304.github.io/tag/kan-bing.html', null);
+            tc.add('话费', 1, 'http://suxing304.github.io/tag/hua-fei.html', null);
+            tc.add('debug', 1, 'http://suxing304.github.io/tag/debug.html', null);
+            tc.add('google', 1, 'http://suxing304.github.io/tag/google.html', null);
+            tc.add('免费', 1, 'http://suxing304.github.io/tag/mian-fei.html', null);
+            tc.add('dokuwiki', 1, 'http://suxing304.github.io/tag/dokuwiki.html', null);
+            tc.add('动漫', 3, 'http://suxing304.github.io/tag/dong-man.html', null);
+            tc.add('todo', 1, 'http://suxing304.github.io/tag/todo.html', null);
+            tc.add('w3_total_cache', 1, 'http://suxing304.github.io/tag/w3_total_cache.html', null);
+            tc.add('轻音乐', 1, 'http://suxing304.github.io/tag/qing-yin-le.html', null);
+            tc.add('照片', 1, 'http://suxing304.github.io/tag/zhao-pian.html', null);
+            tc.add('牙疼', 1, 'http://suxing304.github.io/tag/ya-teng.html', null);
+            tc.add('resume', 1, 'http://suxing304.github.io/tag/resume.html', null);
+            tc.add('call stack', 1, 'http://suxing304.github.io/tag/call-stack.html', null);
+            tc.add('生活', 1, 'http://suxing304.github.io/tag/sheng-huo.html', null);
+            tc.add('ubuntu', 1, 'http://suxing304.github.io/tag/ubuntu.html', null);
+            tc.add('音乐', 4, 'http://suxing304.github.io/tag/yin-le.html', null);
+            tc.add('糗事百科', 6, 'http://suxing304.github.io/tag/qiu-shi-bai-ke.html', null);
+            tc.add('plugin', 2, 'http://suxing304.github.io/tag/plugin.html', null);
+            tc.add('career', 1, 'http://suxing304.github.io/tag/career.html', null);
+            tc.add('天籁之音', 1, 'http://suxing304.github.io/tag/tian-lai-zhi-yin.html', null);
+            tc.add('设计', 1, 'http://suxing304.github.io/tag/she-ji.html', null);
+            tc.add('backup', 1, 'http://suxing304.github.io/tag/backup.html', null);
+            tc.add('转载', 10, 'http://suxing304.github.io/tag/zhuan-zai.html', null);
+            tc.add('旅游', 1, 'http://suxing304.github.io/tag/lu-you.html', null);
+            tc.add('南京', 1, 'http://suxing304.github.io/tag/nan-jing.html', null);
+            tc.add('新番', 2, 'http://suxing304.github.io/tag/xin-fan.html', null);
+            tc.add('API', 1, 'http://suxing304.github.io/tag/api.html', null);
+            tc.add('linux', 1, 'http://suxing304.github.io/tag/linux.html', null);
+            tc.add('名言', 1, 'http://suxing304.github.io/tag/ming-yan.html', null);
+            tc.add('callstack', 1, 'http://suxing304.github.io/tag/callstack.html', null);
+            tc.add('自由', 1, 'http://suxing304.github.io/tag/zi-you.html', null);
+            tc.add('震撼', 1, 'http://suxing304.github.io/tag/zhen-han.html', null);
+            tc.add('wordpress', 4, 'http://suxing304.github.io/tag/wordpress.html', null);
+            tc.add('VPS', 3, 'http://suxing304.github.io/tag/vps.html', null);
+            tc.add('反思', 1, 'http://suxing304.github.io/tag/fan-si.html', null);
+            tc.add('凌乱中', 1, 'http://suxing304.github.io/tag/ling-luan-zhong.html', null);
+            tc.add('rss', 1, 'http://suxing304.github.io/tag/rss.html', null);
+            tc.add('work', 1, 'http://suxing304.github.io/tag/work.html', null);
+            tc.add('sumarry', 1, 'http://suxing304.github.io/tag/sumarry.html', null);
+            tc.add('pelican', 1, 'http://suxing304.github.io/tag/pelican.html', null);
+            tc.add('RWBY', 1, 'http://suxing304.github.io/tag/rwby.html', null);
+            tc.add('社会', 1, 'http://suxing304.github.io/tag/she-hui.html', null);
+            tc.add('PIL', 1, 'http://suxing304.github.io/tag/pil.html', null);
+            tc.add('收集', 1, 'http://suxing304.github.io/tag/shou-ji.html', null);
+            tc.add('golang', 3, 'http://suxing304.github.io/tag/golang.html', null);
+            tc.add('captcha', 1, 'http://suxing304.github.io/tag/captcha.html', null);
+            tc.add('gcc', 1, 'http://suxing304.github.io/tag/gcc.html', null);
+            tc.add('精神胜利', 1, 'http://suxing304.github.io/tag/jing-shen-sheng-li.html', null);
+            tc.add('战争', 1, 'http://suxing304.github.io/tag/zhan-zheng.html', null);
+            tc.add('linode', 2, 'http://suxing304.github.io/tag/linode.html', null);
+            tc.add('win7', 1, 'http://suxing304.github.io/tag/win7.html', null);
+            tc.add('test', 1, 'http://suxing304.github.io/tag/test.html', null);
+            tc.add('空气污染', 1, 'http://suxing304.github.io/tag/kong-qi-wu-ran.html', null);
+            tc.add('网站', 1, 'http://suxing304.github.io/tag/wang-zhan.html', null);
+            tc.add('kindle_paperwhite', 1, 'http://suxing304.github.io/tag/kindle_paperwhite.html', null);
+            tc.add('倦怠期', 1, 'http://suxing304.github.io/tag/juan-dai-qi.html', null);
+            tc.add('static_blog', 1, 'http://suxing304.github.io/tag/static_blog.html', null);
+            tc.add('未完成', 4, 'http://suxing304.github.io/tag/wei-wan-cheng.html', null);
+            tc.add('php', 4, 'http://suxing304.github.io/tag/php.html', null);
+            tc.add('备案', 1, 'http://suxing304.github.io/tag/bei-an.html', null);
+            tc.add('中国风', 1, 'http://suxing304.github.io/tag/zhong-guo-feng.html', null);
+            tc.add('笑话', 7, 'http://suxing304.github.io/tag/xiao-hua.html', null);
+            tc.add('doc', 2, 'http://suxing304.github.io/tag/doc.html', null);
+            tc.add('海淘', 1, 'http://suxing304.github.io/tag/hai-tao.html', null);
+            tc.add('digitalocean', 2, 'http://suxing304.github.io/tag/digitalocean.html', null);
+            tc.add('cpp', 1, 'http://suxing304.github.io/tag/cpp.html', null);
+            tc.add('函数调用', 1, 'http://suxing304.github.io/tag/han-shu-diao-yong.html', null);
+            tc.add('addiction', 1, 'http://suxing304.github.io/tag/addiction.html', null);
+            tc.loadEffector('CountSize');tc.loadEffector('CountSize');
+
+            function tag_filter() {
+              tc.searchAndDisplay('niu2-tagcloud', $('#niu2-tagcloud-filter-input').val());
+              return false;
+            }
+            tc.setup('niu2-tagcloud');
+        </script>
+    </body>
+</html>

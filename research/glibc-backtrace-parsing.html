@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="gcc, sigsegv, call stack, debug, linux">
+        <meta name="description" content="本文简要介绍在Linux上输出和解析C++的call stack的方法。 开发环境: * 编译器: gcc 4.8.2 * 操作系统: Ubuntu 14.04 x86_64 输出调用堆栈 glibc中提供了backtrace()和backtrace_symbols()两个函数来输出和解析程序的call stack，详情见man backtrace。 下面的代码修改自backtrace手册里的例子，当程序收到SIGSEGV信号（内存访问越界）时，输出程序的调用堆栈，以方便定位崩溃点。 这段代码在第29行必然会引发内存访问越界。 使用如下的命令编译代码，这是release版本 g++ -rdynamic -o test.r test_backtrace.cpp 为了解析文件的行号等信息，我们还需要一个debug版本 g++ -rdynamic -g -o test.d test_backtrace.cpp ...">
+        <title>输出并解析C++的调用堆栈 - sssss</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/font-icons/style.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/niu2.min.css" type="text/css" />
+        <link rel="canonical" href="http://suxing304.github.io/research/glibc-backtrace-parsing.html" />
+        <script type="text/javascript">window.onload=function(){};</script>
+        <!--[if lt IE 9]>
+            <script src="http://suxing304.github.io/theme/js/html5shiv.js"></script>
+            <script src="http://suxing304.github.io/theme/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body> 
+        <div id="body-header">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://suxing304.github.io">
+                            <i class="icon-home"></i>sssss
+                        </a>
+                    </div>
+                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/about.html" title="about me">
+                                <i class="icon-anchor"></i>关于</a>
+                            </li>
+                            <li><a href="/agreement.html" title="agreement">
+                                <i class="icon-exclamation-circle"></i>使用协议</a>
+                            </li>
+                            <li><a href="/my_projects.html" title="my projects">
+                                <i class="icon-rocket"></i>项目</a>
+                            </li>
+                            <li><a href="/tag/" title="tags">
+                                <i class="icon-tag"></i>标签</a>
+                            </li>
+                        <!-- category dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-folder-open"></i>分类<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="http://suxing304.github.io/code/index.html">
+                                      <i class="icon-eyedropper"></i>代码
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/collection/index.html">
+                                      <i class="icon-briefcase"></i>搜藏
+                                      (18)</a></li>
+                               <li><a href="http://suxing304.github.io/essay/index.html">
+                                      <i class="icon-leaf"></i>随笔
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/life/index.html">
+                                      <i class="icon-coffee"></i>日常
+                                      (16)</a></li>
+                               <li><a href="http://suxing304.github.io/research/index.html">
+                                      <i class="icon-flask"></i>研究
+                                      (5)</a></li>
+                           </ul>
+                        </li>
+                        <!--  self defined dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                               <i class="icon-archive"></i>存档<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="/archives.html" title="archives order by publish time">
+                                 <i class="icon-calendar"></i>存档 (按发布时间)</a>
+                               </li>
+                               <li><a href="/archives_updatedate.html" title="archives order by modify time">
+                                 <i class="icon-pencil"></i>存档 (按修改时间)</a>
+                               </li>
+                           </ul>
+                        </li>
+                        </ul>
+                        
+                        <!-- right nav bar -->
+                        <ul class="nav navbar-nav navbar-right">
+                        <!-- google custom search -->
+                       </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div id="body-content">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 id="content-heading">输出并解析C++的调用堆栈</h1>
+            </div>
+            <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
+                <div id="niu2-main-content">
+                    <p>本文简要介绍在Linux上输出和解析C++的call stack的方法。</p>
+<p>开发环境:</p>
+<div class="codehilite"><pre>* 编译器: gcc 4.8.2
+* 操作系统: Ubuntu 14.04 x86_64
+</pre></div>
+<h2 id="158cb2">输出调用堆栈</h2>
+<p>glibc中提供了<code>backtrace()</code>和<code>backtrace_symbols()</code>两个函数来输出和解析程序的call stack，详情见<code>man backtrace</code>。</p>
+<p>下面的代码修改自backtrace手册里的例子，当程序收到SIGSEGV信号（内存访问越界）时，输出程序的调用堆栈，以方便定位崩溃点。</p>
+<script src="https://gist.github.com/mawenbao/11278165.js"></script>
+<p>这段代码在第29行必然会引发内存访问越界。</p>
+<p>使用如下的命令编译代码，这是release版本</p>
+<div class="codehilite"><pre>g++ -rdynamic -o test.r test_backtrace.cpp
+</pre></div>
+<p>为了解析文件的行号等信息，我们还需要一个debug版本</p>
+<div class="codehilite"><pre>g++ -rdynamic -g -o test.d test_backtrace.cpp
+</pre></div>
+<p>上面的编译命令中，加入<code>-rdynamic</code>可以将所有非static全局变量和非static函数的符号输出到符号表中。如果你不想在release版本中使用<code>-rdynamic</code>选项，编译debug版本的时候也不能用，否则符号表会不一致，从而影响后面的解析过程。</p>
+<h2 id="d62db7">解析bactrace输出</h2>
+<p>运行上面的程序，输出如下</p>
+<div class="codehilite"><pre>./test.r(_Z18print_stack_framesi+0x25) [0x400a02]
+/lib/x86_64-linux-gnu/libc.so.6(+0x36ff0) [0x7f7ddcfb6ff0]
+./test.r(_Z7myfunc2i+0xe) [0x400ab4]
+./test.r(_Z6myfuncv+0x19) [0x400ad1]
+./test.r(main+0x23) [0x400af6]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5) [0x7f7ddcfa1ec5]
+./test.r() [0x400919]
+</pre></div>
+<p>每一行的中括号里的十六进制数是返回地址，小括号里加号之前的内容是mangle后的函数名称，加号之后的十六进制数是返回地址相对函数地址的偏移量。</p>
+<p>以第一行为例，首先解析函数名，mangle后的函数名称是<code>_Z18print_stack_framesi</code>，使用<code>c++filt</code>命令可以将其demangle</p>
+<div class="codehilite"><pre>c++filt _Z18print_stack_framesi
+</pre></div>
+<p>输出<code>print_stack_frames(int)</code>。</p>
+<p>然后使用addr2line获取返回地址所在的行号</p>
+<div class="codehilite"><pre>addr2line -e test.d 0x400a02
+</pre></div>
+<p>输出<code>/home/wilbur/test_backtrace.cpp:13</code></p>
+<p>需要注意的是，addr2line必须读取额外的调试信息来解析返回地址所在的行号，这也是我们之前编译debug版本的<code>test.d</code>的原因。</p>
+<h2 id="b53c82">python解析脚本</h2>
+<p>下面是一个专门解析backtrace输出的python脚本。</p>
+<script src="https://gist.github.com/mawenbao/11282888.js"></script>
+<p>输入如下命令</p>
+<div class="codehilite"><pre>./test.r | python backtrace_parser.py ./test.d
+</pre></div>
+<p>输出如下</p>
+<div class="codehilite"><pre>[./test.r]  /home/wilbur/test_backtrace.cpp:13  print_stack_frames(int)
+[./test.r]  /home/wilbur/test_backtrace.cpp:29  myfunc2(int)
+[./test.r]  /home/wilbur/test_backtrace.cpp:35  myfunc()
+</pre></div>
+<h2 id="b933c2">backtrace和core dump</h2>
+<p>Linux的core dump机制可以让你的程序在崩溃的时候在磁盘上保留一份gdb可调试的内存镜像。相比core dump，backtrace虽然只能提供函数的名称和行号等信息，但是胜在简便灵活。另外在生产环境中，许多时候可能不方便使用gcc的<code>-g</code>选项编译程序，因此就算有core dump也很难用gdb进行调试。</p>
+<h2 id="dc9cb8">扩展阅读</h2>
+<ol>
+<li><a href="http://man7.org/linux/man-pages/man5/elf.5.html">man 5 elf</a></li>
+</ol>
+                </div>
+                <div id="content-comments">
+                </div>
+
+            </div>
+            <div class="niu2-right-container col-md-2">
+                <div id="niu2-sidebar-meta" class="niu2-sidebar">
+                    <div class="niu2-sidebar-label"><i class="icon-calendar"></i>发布时间:</div>
+                    <div class="niu2-sidebar-value">2014-04-25 15:04</div>
+                    <div class="niu2-sidebar-label"><i class="icon-pencil" style="font-size: 1.05em;"></i>最后修改:</div>
+                    <div class="niu2-sidebar-value">2014-04-25 17:04</div>
+                    <div class="niu2-sidebar-label"><i class="icon-flask"></i>分类:</div>
+                    <div class="niu2-sidebar-value"><a href="http://suxing304.github.io/research/index.html">研究</a></div>
+                    <div class="niu2-sidebar-label"><i class="icon-tag"></i>标签:</div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/gcc.html">gcc</a><sup>1</sup></div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/sigsegv.html">sigsegv</a><sup>1</sup></div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/call-stack.html">call stack</a><sup>1</sup></div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/debug.html">debug</a><sup>1</sup></div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/linux.html">linux</a><sup>1</sup></div>
+                </div>
+
+                <div id="niu2-sidebar-toc" class="niu2-sidebar" data-status="closed">
+                    <div class="niu2-sidebar-label">
+                        <i id="niu2-sidebar-toc-ctrl" class="icon-open-tocs"></i>目录
+                    </div>
+                    <ol id="niu2-sidebar-toc-list">
+                        <li><a href="#content-heading">输出并解析C++的调用堆栈</a></li>
+                        <li><a href='#158cb2'>输出调用堆栈</a></li><li><a href='#d62db7'>解析bactrace输出</a></li><li><a href='#b53c82'>python解析脚本</a></li><li><a href='#b933c2'>backtrace和core dump</a></li><li><a href='#dc9cb8'>扩展阅读</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div id="niu2-toolbar">
+                <ul class="list-unstyled">
+                    <li><a id="niu2-toolbar-ctrlsidebar" href="#" title="隐藏侧边栏"><i class="icon-3x icon-hide-sidebar"></i></a></li>
+                </ul>
+                <div id="niu2-toolbar-showsidebar" data-title="显示侧边栏"></div>
+                <div id="niu2-toolbar-github" data-repo=""></div>
+                <div id="niu2-toolbar-bitbucket" data-repo=""></div>
+            </div>
+            <div id="niu2-toc" data-style="fixed"></div>
+        </div>
+
+        <div class="niu2-footer">
+            <div id="body-footer" class="col-md-6 col-md-offset-2">
+                <hr/>
+                <p>
+                    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
+                    <a href="https://github.com/mawenbao/niu-x2-sidebar">theme</a> built with <a href="https://github.com/twbs/bootstrap">Bootstrap3</a>
+                    by <a href="https://blog.mawenbao.com">Ma Wenbao</a>, icons by 
+                    <a href="https://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
+                </p>
+                <p>
+                    ©
+                            2009-2014
+                    <a class="niu2-footer-link" href="http://suxing304.github.io">Su</a>
+                    /                         <a class="niu2-footer-link" href="/about.html" title="about me">关于</a>
+                    /                         <a class="niu2-footer-link" href="/agreement.html" title="terms, license and privacy etc.">使用协议</a>
+                    /                         <a class="niu2-footer-link" href="http://www.miitbeian.gov.cn/" title="备案号">沪ICP备14018579号-1</a>
+                </p>
+                <p class="niu2-icons">
+                    <a class="niu2-footer-icon" href="/my_gnupg.html" title="my public key">
+                        <i class="icon-key icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="mailto: mwenbao@gmail.com" title="my email address">
+                        <i class="icon-envelope-o icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="http://github.com/mawenbao" title="my github page">
+                        <i class="icon-github-alt icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="/feed.xml" title="subscribe my blog">
+                        <i class="icon-rss icon-lg"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div id="niu2-pygments" data-theme="github"></div>
+        <div id="niu2-lazy-load" data-loading-txt="orz 努力加载中" data-loading-icon="icon-spin icon-spinner2"></div>
+        <div id="niu2-toolbar-load" data-loading-icon="icon-spin icon-4x icon-spinner9"></div>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/niu2.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            onContentLoaded();
+        </script>
+    </body>
+</html>

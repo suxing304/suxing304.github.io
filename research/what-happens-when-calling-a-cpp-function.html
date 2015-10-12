@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="cpp, callstack, 函数调用">
+        <meta name="description" content="用一个简单的例子解释C++函数调用的过程，备忘。 实验环境 以下是本次实验的环境配置 * 操作系统: Ubuntu 14.04 x86_64 * 编译器: gcc-4.8.2 开始之前 阅读资料 开始之前，建议先阅读如下几篇文章，对call stack和asm多少有点了解，下文会涉及到很多这方面的东西。 Understanding Memory Wikipedia:call stack A Readers Guide to x86 Assembly Wikipedia:function prologue 预备知识 下面是一些在后面的解释中会用到的知识，以下说明均基于x86-64平台。 栈(call stack, runtime stack或stack): 在Linux上我们编译程序后一般生成的可执行文件是ELF格式的，下图是一个简化版的ELF文件结构1 +----------------------+ | ... ... | +----------------------+ | .text | <- 程序的可执行指令 +----------------------+ | ... ... | +----------------------+ | .data | <- 初始化的全局和静态变量 ...">
+        <title>C++函数调用过程解析 - sssss</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/font-icons/style.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://suxing304.github.io/theme/css/niu2.min.css" type="text/css" />
+        <link rel="canonical" href="http://suxing304.github.io/research/what-happens-when-calling-a-cpp-function.html" />
+        <script type="text/javascript">window.onload=function(){};</script>
+        <!--[if lt IE 9]>
+            <script src="http://suxing304.github.io/theme/js/html5shiv.js"></script>
+            <script src="http://suxing304.github.io/theme/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body> 
+        <div id="body-header">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://suxing304.github.io">
+                            <i class="icon-home"></i>sssss
+                        </a>
+                    </div>
+                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/about.html" title="about me">
+                                <i class="icon-anchor"></i>关于</a>
+                            </li>
+                            <li><a href="/agreement.html" title="agreement">
+                                <i class="icon-exclamation-circle"></i>使用协议</a>
+                            </li>
+                            <li><a href="/my_projects.html" title="my projects">
+                                <i class="icon-rocket"></i>项目</a>
+                            </li>
+                            <li><a href="/tag/" title="tags">
+                                <i class="icon-tag"></i>标签</a>
+                            </li>
+                        <!-- category dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-folder-open"></i>分类<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="http://suxing304.github.io/code/index.html">
+                                      <i class="icon-eyedropper"></i>代码
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/collection/index.html">
+                                      <i class="icon-briefcase"></i>搜藏
+                                      (18)</a></li>
+                               <li><a href="http://suxing304.github.io/essay/index.html">
+                                      <i class="icon-leaf"></i>随笔
+                                      (9)</a></li>
+                               <li><a href="http://suxing304.github.io/life/index.html">
+                                      <i class="icon-coffee"></i>日常
+                                      (16)</a></li>
+                               <li><a href="http://suxing304.github.io/research/index.html">
+                                      <i class="icon-flask"></i>研究
+                                      (5)</a></li>
+                           </ul>
+                        </li>
+                        <!--  self defined dropdown list -->
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                               <i class="icon-archive"></i>存档<b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu">
+                               <li><a href="/archives.html" title="archives order by publish time">
+                                 <i class="icon-calendar"></i>存档 (按发布时间)</a>
+                               </li>
+                               <li><a href="/archives_updatedate.html" title="archives order by modify time">
+                                 <i class="icon-pencil"></i>存档 (按修改时间)</a>
+                               </li>
+                           </ul>
+                        </li>
+                        </ul>
+                        
+                        <!-- right nav bar -->
+                        <ul class="nav navbar-nav navbar-right">
+                        <!-- google custom search -->
+                       </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div id="body-content">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 id="content-heading">C++函数调用过程解析</h1>
+            </div>
+            <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
+                <div id="niu2-main-content">
+                    <p>用一个简单的例子解释C++函数调用的过程，备忘。</p>
+<h2 id="122670">实验环境</h2>
+<p>以下是本次实验的环境配置</p>
+<div class="codehilite"><pre>* 操作系统: Ubuntu 14.04 x86_64
+* 编译器: gcc-4.8.2
+</pre></div>
+<h2 id="0ba51e">开始之前</h2>
+<h3 id="81f5d5">阅读资料</h3>
+<p>开始之前，建议先阅读如下几篇文章，对call stack和asm多少有点了解，下文会涉及到很多这方面的东西。</p>
+<ul>
+<li><a href="http://www.ualberta.ca/CNS/RESEARCH/LinuxClusters/mem.html">Understanding Memory</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Call_stack">Wikipedia:call stack</a></li>
+<li><a href="http://cseweb.ucsd.edu/classes/sp10/cse141/pdf/02/S01_x86_64.key.pdf">A Readers Guide to x86 Assembly</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Function_prologue">Wikipedia:function prologue</a></li>
+</ul>
+<h3 id="81f5dd">预备知识</h3>
+<p>下面是一些在后面的解释中会用到的知识，以下说明均基于x86-64平台。</p>
+<ol>
+<li>
+<p>栈(call stack, runtime stack或stack): 在Linux上我们编译程序后一般生成的可执行文件是ELF格式的，下图是一个简化版的ELF文件结构<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<div class="codehilite"><pre>+----------------------+
+|       ... ...        |
++----------------------+
+|        .text         | &lt;- 程序的可执行指令
++----------------------+
+|       ... ...        |
++----------------------+
+|        .data         | &lt;- 初始化的全局和静态变量
++----------------------+
+|        .bss          | &lt;- 未初始化的全局和静态变量
++----------------------+
+|       ... ...        |
++----------------------+
+</pre></div>
+<p>可执行文件将会在运行时被载入内存中，下面是一个简化的进程虚拟地址空间图。</p>
+<div class="codehilite"><pre>+----------------------+ &lt;- 高地址处
+|       ... ...        |
++----------------------+ 
+|        stack         | &lt;- 本文的主角，call stack，向低地址处生长
++----------------------+ 
+|       ... ...        |
++----------------------+ 
+|        heap          | &lt;- 动态分配的内存，向高地址处生长
++----------------------+
+|  uninitialized data  | &lt;- 未初始化的全局变量和静态变量
++----------------------+
+|   initialzed data    | &lt;- 初始化的全局和静态变量，从ELF的.data区载入
++----------------------+
+|        code          | &lt;- 程序代码，从ELF的.text区载入
++----------------------+
+|       ... ...        |
++----------------------+ &lt;- 低地址处
+</pre></div>
+</li>
+<li>
+<p>寄存器:</p>
+<ul>
+<li>%rax: 通常用于返回第一个整数。</li>
+<li>%rbp: base pointer，指向当前frame的底部附近(caller的%rbp)。</li>
+<li>%rsp: stack pointer，用于保存最新分配的frame的顶部，也就是stack顶部。</li>
+</ul>
+</li>
+<li>调用者(caller)和被调用者(callee): 在函数foo的上下文中，调用者(caller)就是main函数，被调用者(callee)就是foo函数。</li>
+<li>stack frame: stack是由一个个的stack frmae组成的，每次函数调用都会在栈上分配一个新的frame，该frame内保存了当前函数调用的上下文信息，包括请求参数(可能直接保存在寄存器中<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>)，返回地址和局部变量等内容。</li>
+<li>返回地址: callq指令会在调用函数的时候将下一条指令的地址push到stack上，当本次调用结束后，retq指令会跳转到被保存的返回地址处使程序继续执行。</li>
+<li>stack上的数据是<a href="http://www.ibm.com/developerworks/library/pa-dalign/">字节对齐</a>的。</li>
+<li>
+<p>stack由高地址处向低地址处生长，在下图中<code>16(%rbp)</code>表示地址<code>16 + value of register[%rbp]</code></p>
+<div class="codehilite"><pre>+----------------------+ &lt;- 高地址处
+|       ... ...        |
++----------------------+ 
+|      parameters      | &lt;- 没有保存到寄存器里的callee的函数参数(如果有的话)
++----------------------+ &lt;- 16(%rbp) + n*8 n=0,1,2,3 ...
+|    return address    | &lt;- callee的返回地址，callee的stack frame开始处
++----------------------+ &lt;- 8(%rbp)
+|     caller's %rbp    | &lt;- 保存的是caller的%rbp
++----------------------+ &lt;- (%rbp) 
+|    saved registers   | &lt;- 最开始是在函数调用中会被占用的寄存器(如果有的话)，调用结束后恢复
++----------------------+
+| callee's locals etc. | &lt;- 之后是函数内定义的局部变量和临时变量(保存函数参数寄存器等)
++----------------------+
+|       ... ...        |
++----------------------+
+|      parameters      | &lt;- callee的callee的函数参数(如果有的话)
++----------------------+ &lt;- n*8(%rsp) n=0,1,2,3 ...
+|       ... ...        | &lt;- 栈顶，calleee的stack frame结束处
++----------------------+ &lt;- (%rsp)
+|       ... ...        |
++----------------------+ &lt;- 低地址处
+</pre></div>
+<p>当callee的函数参数太多(或存在不能存储到寄存器上的参数类型)时，多余的函数参数会按照从右向左的顺序依次入栈，占用caller的stack frame的空间。<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></p>
+</li>
+<li>
+<p>汇编指令:</p>
+<ul>
+<li>
+<p>leaveq: 相当于以下两条指令<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></p>
+<div class="codehilite"><pre>mov %rbp, %rsp // 将栈顶指针指向caller的frame指针
+pop %rbp       // 将caller的frame指针出栈并保存于%rbp中
+</pre></div>
+</li>
+<li>
+<p>callq: 将下一条指令的地址入栈，然后跳转到目标地址处执行<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup>。</p>
+</li>
+<li>retq: 将返回地址出栈并跳转到该地址处继续执行<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="334fe1">简单的例子</h2>
+<p>下面是一个非常简单的例子。</p>
+<h3 id="ba0431">cpp源代码</h3>
+<p><script src="https://gist.github.com/mawenbao/96dbd44c385764ed90b0.js"></script></p>
+<p>使用如下命令编译<code>call_stack_example.cpp</code></p>
+<div class="codehilite"><pre>g++ -g -O0 -fno-stack-protector call_stack_example.cpp -o a.out
+</pre></div>
+<p>为了让汇编代码更简单，我们在编译选项里使用<code>-fno-stack-protector</code>，这可以禁止gcc默认启用的Stack Protection<sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">6</a></sup>，关于Stack Protection的详细信息可参考<a href="http://en.wikipedia.org/wiki/Buffer_overflow_protection">Buffer overflow protection</a>和<a href="ftp://gcc.gnu.org/pub/gcc/summit/2003/Stackguard.pdf">StackGuard: Simple Stack Smash Protection for GCC</a>。</p>
+<h3 id="7a9dea">汇编代码和注释</h3>
+<p>然后使用<code>objdump</code>输出汇编代码</p>
+<div class="codehilite"><pre>objdump -dS a.out -j .text
+</pre></div>
+<p>下面是call_stack_example.cpp内三个函数的汇编代码和注释，gcc默认使用的是AT&amp;T汇编语法。</p>
+<script src="https://gist.github.com/mawenbao/becea4b6acdc9d3dfb14.js"></script>
+<h2 id="d340b5">其他例子</h2>
+<h3 id="a5e35d">函数参数传递</h3>
+<p>下面的例子取自<a href="http://www.x86-64.org/documentation/abi-0.99.pdf">System V Application Binary Interface</a>的图3.5 Parameter Passing Example和图3.6 Register Allocation Example</p>
+<p>假设有以下结构体和函数</p>
+<div class="codehilite"><pre>typedef struct {
+    int a, b;
+    double d;
+} structparm;
+
+extern void func(
+    int e,
+    int f,
+    structparm s,
+    int g,
+    int h,
+    long double ld,
+    double m,
+    __m256 y,
+    double n,
+    int i,
+    int j,
+    int k);
+</pre></div>
+<p>然后如下调用函数func:</p>
+<div class="codehilite"><pre>structparm s;
+int e, f, g, h, i, j, k;
+long double ld;
+double m, n;
+__m256 y;
+
+func (e, f, s, g, h, ld, m, y, n, i, j, k);
+</pre></div>
+<p>则函数参数的传递方式如下表</p>
+<table>
+<thead>
+<tr>
+<th>General Purpose Registers</th>
+<th>Floating Point Registers</th>
+<th>Stack Frame Offset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%rdi: e</td>
+<td>%xmm0: s.d</td>
+<td>0: ld</td>
+</tr>
+<tr>
+<td>%rsi: f</td>
+<td>%xmm1: m</td>
+<td>16: j</td>
+</tr>
+<tr>
+<td>%rdx: s.a, s.b</td>
+<td>%ymm2: y<sup id="fnref:7"><a class="footnote-ref" href="#fn:7" rel="footnote">7</a></sup></td>
+<td>24: k<sup id="fnref:8"><a class="footnote-ref" href="#fn:8" rel="footnote">8</a></sup></td>
+</tr>
+<tr>
+<td>%rcx: g</td>
+<td>%xmm3: n</td>
+<td></td>
+</tr>
+<tr>
+<td>%r8:  h</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>%r9:  i</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ee37a7">额外阅读资料</h2>
+<ol>
+<li><a href="http://www.x86-64.org/documentation/abi-0.99.pdf">System V Application Binary Interface</a></li>
+<li><a href="http://www.x86-64.org/documentation/assembly.html">Gentle Introduction to x86-64 Assembly</a></li>
+<li><a href="http://www.classes.cs.uchicago.edu/archive/2009/spring/22620-1/docs/handout-03.pdf">x86-64 Machine-Level Programming</a></li>
+<li><a href="http://www.scs.stanford.edu/nyu/04fa/notes/l2.pdf">Review of assembly language</a></li>
+<li><a href="http://turkeyland.net/projects/overflow/crash.php">Buffer Overflows and You</a></li>
+<li><a href="http://www.win.tue.nl/~aeb/linux/hh/protection.html">Protection against buffer overflows</a></li>
+<li><a href="http://eli.thegreenplace.net/2011/09/06/stack-frame-layout-on-x86-64/">Stack frame layout on x86-64</a></li>
+<li><a href="http://www.tenouk.com/Bufferoverflowc/Bufferoverflow2a.html">BUFFER OVERFLOW 6: The Function Stack</a></li>
+<li><a href="http://dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html">Linux x86 Program Start Up</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561499(v=vs.85).aspx">x64 Architecture</a></li>
+<li><a href="http://cocoafactory.com/blog/2012/11/23/x86-64-assembly-language-tutorial-part-1/">X86_64 Assembly Language Tutorial: Part 1</a></li>
+<li><a href="http://people.freebsd.org/~lstewart/references/amd64.pdf">Amd64 Overview</a></li>
+</ol>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p><a href="http://linux.die.net/man/5/elf">man elf</a>，引用于2014-05-07。 <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>关于参数是否通过寄存器传递的具体细则，请参考<a href="http://www.x86-64.org/documentation/abi-0.99.pdf">System V Application Binary Interface</a>的<code>3.2.3 Parameter Passing</code>部分。 <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:3">
+<p>参考<a href="http://www.x86-64.org/documentation/abi-0.99.pdf">System V Application Binary Interface</a>的3.2 Function Calling Sequence，引用于2014-05-07。 <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn:4">
+<p><a href="http://en.wikipedia.org/wiki/Function_prologue">Wikipedia:function prologue</a>, 引用于2014-05-04。  <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://www.cs.uaf.edu/2012/fall/cs301/lecture/09_24_call_and_ret.html">Call vs Jmp: The Stack Connection</a>，引用于2014-05-05。 <a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn:6">
+<p>参考<code>man gcc</code>中关于<code>-fstack-protector</code>选项的说明。 <a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn:7">
+<p>%ymm0-%ymm15是256位的浮点数寄存器，其低128位对应%xmm0-%xmm15 <a class="footnote-backref" href="#fnref:7" rev="footnote" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+<li id="fn:8">
+<p>栈上的函数参数要按8字节对齐 <a class="footnote-backref" href="#fnref:8" rev="footnote" title="Jump back to footnote 8 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+                </div>
+                <div id="content-comments">
+                </div>
+
+            </div>
+            <div class="niu2-right-container col-md-2">
+                <div id="niu2-sidebar-meta" class="niu2-sidebar">
+                    <div class="niu2-sidebar-label"><i class="icon-calendar"></i>发布时间:</div>
+                    <div class="niu2-sidebar-value">2014-05-01 14:48</div>
+                    <div class="niu2-sidebar-label"><i class="icon-pencil" style="font-size: 1.05em;"></i>最后修改:</div>
+                    <div class="niu2-sidebar-value">2014-06-26 11:10</div>
+                    <div class="niu2-sidebar-label"><i class="icon-flask"></i>分类:</div>
+                    <div class="niu2-sidebar-value"><a href="http://suxing304.github.io/research/index.html">研究</a></div>
+                    <div class="niu2-sidebar-label"><i class="icon-tag"></i>标签:</div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/cpp.html">cpp</a><sup>1</sup></div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/callstack.html">callstack</a><sup>1</sup></div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://suxing304.github.io/tag/han-shu-diao-yong.html">函数调用</a><sup>1</sup></div>
+                </div>
+
+                <div id="niu2-sidebar-toc" class="niu2-sidebar" data-status="closed">
+                    <div class="niu2-sidebar-label">
+                        <i id="niu2-sidebar-toc-ctrl" class="icon-open-tocs"></i>目录
+                    </div>
+                    <ol id="niu2-sidebar-toc-list">
+                        <li><a href="#content-heading">C++函数调用过程解析</a></li>
+                        <li><a href='#122670'>实验环境</a></li><li><a href='#0ba51e'>开始之前</a><ol><li><a href='#81f5d5'>阅读资料</a></li><li><a href='#81f5dd'>预备知识</a></li></ol></li><li><a href='#334fe1'>简单的例子</a><ol><li><a href='#ba0431'>cpp源代码</a></li><li><a href='#7a9dea'>汇编代码和注释</a></li></ol></li><li><a href='#d340b5'>其他例子</a><ol><li><a href='#a5e35d'>函数参数传递</a></li></ol></li><li><a href='#ee37a7'>额外阅读资料</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div id="niu2-toolbar">
+                <ul class="list-unstyled">
+                    <li><a id="niu2-toolbar-ctrlsidebar" href="#" title="隐藏侧边栏"><i class="icon-3x icon-hide-sidebar"></i></a></li>
+                </ul>
+                <div id="niu2-toolbar-showsidebar" data-title="显示侧边栏"></div>
+                <div id="niu2-toolbar-github" data-repo=""></div>
+                <div id="niu2-toolbar-bitbucket" data-repo=""></div>
+            </div>
+            <div id="niu2-toc" data-style="fixed"></div>
+        </div>
+
+        <div class="niu2-footer">
+            <div id="body-footer" class="col-md-6 col-md-offset-2">
+                <hr/>
+                <p>
+                    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
+                    <a href="https://github.com/mawenbao/niu-x2-sidebar">theme</a> built with <a href="https://github.com/twbs/bootstrap">Bootstrap3</a>
+                    by <a href="https://blog.mawenbao.com">Ma Wenbao</a>, icons by 
+                    <a href="https://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
+                </p>
+                <p>
+                    ©
+                            2009-2014
+                    <a class="niu2-footer-link" href="http://suxing304.github.io">Su</a>
+                    /                         <a class="niu2-footer-link" href="/about.html" title="about me">关于</a>
+                    /                         <a class="niu2-footer-link" href="/agreement.html" title="terms, license and privacy etc.">使用协议</a>
+                    /                         <a class="niu2-footer-link" href="http://www.miitbeian.gov.cn/" title="备案号">沪ICP备14018579号-1</a>
+                </p>
+                <p class="niu2-icons">
+                    <a class="niu2-footer-icon" href="/my_gnupg.html" title="my public key">
+                        <i class="icon-key icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="mailto: mwenbao@gmail.com" title="my email address">
+                        <i class="icon-envelope-o icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="http://github.com/mawenbao" title="my github page">
+                        <i class="icon-github-alt icon-lg"></i>
+                    </a>
+                    <a class="niu2-footer-icon" href="/feed.xml" title="subscribe my blog">
+                        <i class="icon-rss icon-lg"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div id="niu2-pygments" data-theme="github"></div>
+        <div id="niu2-lazy-load" data-loading-txt="orz 努力加载中" data-loading-icon="icon-spin icon-spinner2"></div>
+        <div id="niu2-toolbar-load" data-loading-icon="icon-spin icon-4x icon-spinner9"></div>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/niu2.min.js"></script>
+        <script type="text/javascript" src="http://suxing304.github.io/theme/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            onContentLoaded();
+        </script>
+    </body>
+</html>

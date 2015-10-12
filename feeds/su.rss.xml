@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>sssss</title><link>http://suxing304.github.io/</link><description></description><atom:link href="http://suxing304.github.io/feeds/su.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 25 Jun 2014 00:01:00 +0800</lastBuildDate><item><title>[转]糗事百科精选6</title><link>http://suxing304.github.io/collection/qiushibaike6.html</link><description>&lt;p&gt;一些糗事百科上的趣事。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike.html"&gt;糗事百科精选&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike2.html"&gt;糗事百科精选2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike3.html"&gt;糗事百科精选3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike4.html"&gt;糗事百科精选4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike5.html"&gt;糗事百科精选5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike6.html"&gt;糗事百科精选6&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="8fa72b"&gt;请问有一只猫经过这里吗&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="该死的猫呢" src="/static/images/qiushibaike/WhereIsTheCat.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="fa4b4f"&gt;脑筋明显不够用了&lt;/h2&gt;
+&lt;p&gt;我在干活，打电话给儿子，送点东西给我，几分钟又想起点事，再打电话给儿子，儿子接电话说“我已经在半路上了，”儿子啊，你接的固定电话啊！咋在半路上呢？&lt;/p&gt;
+&lt;h2 id="ac9847"&gt;哥相信你&lt;/h2&gt;
+&lt;p&gt;昨晚回老家，听家里人说隔壁叔叔家娃，高考考36分，对，没有少一位，就是36。今早碰见他，还没等我开口，这娃直接说，哥你别问了，他们说的对，我就考了36。孩子，你这么屌，哥相信你是个人才。&lt;/p&gt;
+&lt;h2 id="7391df"&gt;把武器藏起来&lt;/h2&gt;
+&lt;p&gt;萌狗一只，它的主人老是拿这只笤帚打它，于是，它机智地把武器藏了起来。如图，希望它的主人看到不要再打它了。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="把武器藏起来" src="/static/images/qiushibaike/BaWuQiCangQiLai.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="d91acf"&gt;再买一瓶&lt;/h2&gt;
+&lt;p&gt;天太热和朋友去买可乐，冰箱里找了半天没找到，这时售货小姐过来说要什么，朋友说来两瓶可乐，最冰的。售货MM就弯腰给我们找。低胸装有木有，我两货眼睛都直了。这时售货MM抬起头递给我们两瓶可乐，本想着掏钱就走了，谁知道我朋友来了句“再买一瓶”。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Wed, 25 Jun 2014 00:01:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-06-25:collection/qiushibaike6.html</guid><category>糗事百科</category><category>笑话</category><category>转载</category></item><item><title>Music API Server说明文档</title><link>http://suxing304.github.io/code/music-api-server-readme.html</link><description>&lt;p&gt;音乐服务的api通用接口，目前已支持的音乐服务:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;虾米&lt;ul&gt;
+&lt;li&gt;专辑&lt;/li&gt;
+&lt;li&gt;歌曲列表&lt;/li&gt;
+&lt;li&gt;精选集&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;网易云音乐&lt;ul&gt;
+&lt;li&gt;专辑&lt;/li&gt;
+&lt;li&gt;歌曲列表&lt;/li&gt;
+&lt;li&gt;歌单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;仓库地址: &lt;a href="https://github.com/mawenbao/music-api-server"&gt;mawenbao/music-api-server&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="e73553"&gt;安装(debian/ubuntu)&lt;/h2&gt;
+&lt;p&gt;首先检查&lt;code&gt;GOPATH&lt;/code&gt;变量是否正确设置，如果未设置，参考&lt;a href="http://blog.atime.me/note/golang-summary.html#3867e350ebb33a487c4ac5f7787e1c29"&gt;这里&lt;/a&gt;进行设置。&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;# install redis-server
+sudo apt-get install redis-server
+
+# install redis driver for golang
+go get github.com/garyburd/redigo/redis
+
+# install music api server
+go get github.com/mawenbao/music-api-server
+
+# install init script
+sudo cp $GOPATH/src/github.com/mawenbao/music-api-server/tools/init-script /etc/init.d/music-api-server
+
+# set your GOPATH in init script
+sudo sed -i "s|/SET/YOUR/GOPATH/HERE|`echo $GOPATH`|" /etc/init.d/music-api-server
+
+sudo chmod +x /etc/init.d/music-api-server
+
+# start music api server
+sudo service music-api-server start
+
+# (optional) let music api server start on boot
+sudo update-rc.d music-api-server defaults
+
+# (optional) install logrotate config
+sudo cp $GOPATH/src/github.com/mawenbao/music-api-server/tools/logrotate-config /etc/logrotate.d/music-api-server
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="1f7333"&gt;更新(debian/ubuntu)&lt;/h2&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;# update and restart music-api-server
+go get -u github.com/mawenbao/music-api-server
+sudo service music-api-server restart
+
+# flush redis cache
+redis-cli
+&amp;gt; flushall
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="db9742"&gt;API&lt;/h2&gt;
+&lt;h3 id="f0258b"&gt;Demo&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://app.atime.me/music-api-server/?p=xiami&amp;amp;t=songlist&amp;amp;i=20526,1772292423&amp;amp;c=abc123"&gt;http://app.atime.me/music-api-server/?p=xiami&amp;amp;t=songlist&amp;amp;i=20526,1772292423&amp;amp;c=abc123&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="75b160"&gt;请求&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;GET http://localhost:9099/?p=xiami&amp;amp;t=songlist&amp;amp;i=20526,1772292423&amp;amp;c=abc123
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;localhost:9099&lt;/code&gt;: 默认监听地址&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p=xiami&lt;/code&gt;: 音乐API提供商，目前支持:&lt;ul&gt;
+&lt;li&gt;虾米(xiami)&lt;/li&gt;
+&lt;li&gt;网易云音乐(netease)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;t=songlist&lt;/code&gt;: 音乐类型&lt;ul&gt;
+&lt;li&gt;songlist(xiami + netease): 歌曲列表，对应的id是半角逗号分隔的多个歌曲id&lt;/li&gt;
+&lt;li&gt;album(xiami + netease): 音乐专辑，对应的id为专辑id&lt;/li&gt;
+&lt;li&gt;collect(xiami): 虾米的精选集，对应的id为精选集id&lt;/li&gt;
+&lt;li&gt;playlist(netease): 网易云音乐的歌单，对应的id为歌单(playlist)id&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i=20526,1772292423&lt;/code&gt;: 歌曲/专辑/精选集/歌单的id，歌曲列表类型可用半角逗号分割多个歌曲id&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;c=abc123&lt;/code&gt;: 使用jsonp方式返回数据，实际返回为&lt;code&gt;abc123({songs: ...});&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="5f4112"&gt;返回&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;{
+    "status": "返回状态，ok为正常，failed表示出错并设置msg",
+    "msg":    "如果status为failed，这里会保存错误信息，否则不返回该字段",
+    "songs": [
+        {
+            "name":     "歌曲名称",
+            "url":      "歌曲播放地址",
+            "artists":  "演唱者",
+            "provider": "音乐提供商"
+            "lrc_url":  "歌词文件地址(可能没有)",
+        }
+    ]
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果有&lt;code&gt;c=abc123&lt;/code&gt;请求参数，则实际以&lt;a href="http://en.wikipedia.org/wiki/JSONP"&gt;jsonp&lt;/a&gt;方式返回数据。&lt;/p&gt;
+&lt;h2 id="b7b1e3"&gt;TODO&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;更好的缓存策略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="00d067"&gt;Thanks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://mufeng.me/hermit-for-wordpress.html"&gt;Wordpress Hermit Player&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/yanunon/NeteaseCloudMusic/wiki/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90API%E5%88%86%E6%9E%90"&gt;网易云音乐API分析&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Tue, 24 Jun 2014 12:56:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-06-24:code/music-api-server-readme.html</guid><category>音乐服务</category><category>API</category></item><item><title>牙疼记</title><link>http://suxing304.github.io/life/got-a-toothache.html</link><description>&lt;p&gt;
+&lt;div class="hermit" xiami="songlist:1768940271" netease="" loop="1" auto="0"&gt;
+    &lt;div class="hermit-box"&gt;
+        &lt;div class="hermit-controls"&gt;
+            &lt;div class="hermit-button"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-detail"&gt;
+                单击鼠标左键播放或暂停
+            &lt;/div&gt;
+            &lt;div class="hermit-duration"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-volume"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-listbutton"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="hermit-prosess"&gt;
+            &lt;div class="hermit-loaded"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-prosess-bar"&gt;
+                &lt;div class="hermit-prosess-after"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="hermit-list" style=""&gt;
+    &lt;/div&gt;
+    &lt;div class="hermit-add-list" style=""&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;年后有个牙一直不太舒服，不过本着"讳疾忌医"的原则一直拖着没去看医生，直到最近抗不住了才抽空去了趟医院，那疼起来真叫一个欲仙欲死啊。&lt;/p&gt;
+&lt;p&gt;在网上查了下，发现第九人民医院的口腔科很出名，周一一早专门请假赶去。路上各种曲折暂且按下不表，到医院就已经九点多了，大厅里那叫一个人山人海，口腔科的病号更是爆满，好歹挂上一个下午末尾的号。。&lt;/p&gt;
+&lt;p&gt;各种等待，各种无聊。。。。。。&lt;/p&gt;
+&lt;p&gt;排队等叫号的时候遇到一个健谈的小伙，止不住的跟我猛侃世界杯，其实我不看球的。。。&lt;/p&gt;
+&lt;p&gt;下午三点半终于轮到我，急匆匆进了诊室，医生稍微检查了一下发现可能是深龋，然后果断拿起电钻就冲那颗蛀牙上打洞。。。期间各种痛苦各种无奈也都按下不表了。。。&lt;/p&gt;
+&lt;p&gt;医生钻了大半天，发现情况确实还挺严重，龋齿挺深的，怕是已经到了牙髓处（讳疾忌医的报应）。。。医生先把牙洞填上，嘱咐我观察三周再去复诊。。。最坏的情况是抽牙神经（光听就觉得疼了）。。。&lt;/p&gt;
+&lt;p&gt;:(&lt;/p&gt;
+&lt;p&gt;大概能猜到蛀牙的原因，多半是因为晚上刷牙后喝饮料导致的。这是个坏习惯，可怜我还觉得自己各种高大上。试想，在寂静无声的夜里，半倚在床上一边敲着代码，一边时不时的抿上一口营养快线，实在是不能更惬意了。。。只可惜报应也来得不能更快。。。&lt;/p&gt;
+&lt;p&gt;只望从此以后，吸取教训，改掉坏习惯，莫要再讳疾忌医了。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Fri, 20 Jun 2014 12:12:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-06-20:life/got-a-toothache.html</guid><category>牙疼</category><category>看病</category></item><item><title>绘画和涂鸦</title><link>http://suxing304.github.io/life/learn-to-draw.html</link><description>&lt;p&gt;学习绘画，原因，开始和一些资源。&lt;/p&gt;
+&lt;p&gt;
+&lt;div class="hermit" xiami="songlist:3352297" netease="" loop="0" auto="0"&gt;
+    &lt;div class="hermit-box"&gt;
+        &lt;div class="hermit-controls"&gt;
+            &lt;div class="hermit-button"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-detail"&gt;
+                单击鼠标左键播放或暂停
+            &lt;/div&gt;
+            &lt;div class="hermit-duration"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-volume"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-listbutton"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="hermit-prosess"&gt;
+            &lt;div class="hermit-loaded"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-prosess-bar"&gt;
+                &lt;div class="hermit-prosess-after"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="hermit-list" style=""&gt;
+    &lt;/div&gt;
+    &lt;div class="hermit-add-list" style=""&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2 id="41dfb0"&gt;原因&lt;/h2&gt;
+&lt;p&gt;毕业后，基本没再玩过网游了，因为很烦，升级烦，打怪烦，打FB做任务更烦。单机游戏也基本不碰了，因为3D游戏一玩就吐，2D游戏一玩就够，2.5D的竞技游戏一玩就被虐。&lt;/p&gt;
+&lt;p&gt;其实，手笨和严重的&lt;a href="http://www.guokr.com/article/7225/"&gt;3D眩晕症&lt;/a&gt;决定了我根本不适合玩游戏，之前玩游戏纯粹是闲的蛋疼后无奈的折磨自己而已。但是不玩游戏的屌丝如何消磨时间?&lt;/p&gt;
+&lt;p&gt;工作之后，业余时间还是挺多的，有时候既不想学习也不想码代码，就缩在床上看看动漫读读小说，看累了就睡觉。。。时间久了，感觉自己都快要废掉了。&lt;/p&gt;
+&lt;p&gt;其实，内心深处一直有个声音在嘶吼着说要做点什么。小时候随大流读过&amp;lt;&amp;lt;钢铁是怎样炼成的&amp;gt;&amp;gt;，还写过那种千篇一律的主旋律读后感。这么多年来书里的人物和情节早都已经忘得一干二净了，但是一直模模糊糊的记着书中的一句话，好像是这么说的:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;在你临死的时候，你会不会为碌碌一生而后悔?
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;每次想到这个问题，考虑一番后我的回答每次都是: &lt;strong&gt;会&lt;/strong&gt; 。。。&lt;/p&gt;
+&lt;p&gt;人生苦短，总是要尝试些不同的事情，这样死的时候才不会太过后悔，我一直是这么想的，但惭愧的是一直没能这么做。&lt;/p&gt;
+&lt;h2 id="a3e3b8"&gt;开始&lt;/h2&gt;
+&lt;p&gt;前几天在奶茶MM男友的店里买了一块wacom的数位板，打算闲暇的时候自学绘画。有这个想法一方面是受大学时舍友的影响，一方面是因为以前就很喜欢在课本上涂鸦。不知道能否坚持下去，但是总归要尝试一番才好。&lt;/p&gt;
+&lt;h2 id="eee83a"&gt;资源&lt;/h2&gt;
+&lt;p&gt;在网上找了一些自学绘画的资料，分享一下。&lt;i class="fa fa-sun-o fa-spin"&gt;&lt;/i&gt; 不断更新中。。。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这些资源只是刚刚从网上搜集而来，目前还没有仔细阅读和遴选。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="2cb349"&gt;关于自学绘画的讨论和建议&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.zhihu.com/question/19559029"&gt;知乎: 没有美术基础的人，如何学习绘画？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.zhihu.com/question/21312624"&gt;知乎: 零基础如何自学数位板绘画？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cbec2e"&gt;板绘工具相关&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Easy PaintTool SAI&lt;/li&gt;
+&lt;li&gt;PhotoShop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="4089a3"&gt;绘画书籍&lt;/h3&gt;
+&lt;p&gt;目前这些书籍我还没仔细阅读，仅参考了网上的推荐意见后列出。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://book.douban.com/subject/5263615/"&gt;五天学会绘画&lt;/a&gt; (书名翻译的有点奇葩)&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://book.douban.com/subject/1055088/"&gt;像艺术家一样思考&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://book.douban.com/subject/1154707/"&gt;素描的诀窍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://book.douban.com/subject/3372470/"&gt;创意素描的诀窍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="686a49"&gt;网上公开课&lt;/h3&gt;
+&lt;p&gt;只在网易公开课上找到了两门中国美术学院的两门课程，尚待补充。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://v.163.com/special/cuvocw/sumiao.html"&gt;中国美术学院公开课：素描教学与赏析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://v.163.com/special/cuvocw/zaoxingjichu.html"&gt;中央美术学院公开课：造型基础之色彩训练&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="ab5c83"&gt;文字教程&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://hi.baidu.com/comic520/item/0b35f61fe1f067a7ffded563"&gt;找一个愚蠢的下午解决所有难题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.chahua.org/php/list.php?id=14"&gt;传统手绘与美术基础&lt;/a&gt; (文章列表)&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://painting-course.com/the-painting-and-drawing-classes/"&gt;The Painting and Drawing Classes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.open2study.com/courses/the-art-of-drawing-and-painting"&gt;The Art of Drawing and Painting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="aec25b"&gt;视频教程&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://i.youku.com/u/UNTIxMTMyNDQ0/videos"&gt;优酷: 二次元绘画圣地&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="724e32"&gt;绘画社区&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.douban.com/group/151273/"&gt;豆瓣小组: 自学绘画&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.guokr.com/group/185/"&gt;果壳小组: 手绘&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://tieba.baidu.com/f?kw=%BB%E6%BB%AD%CA%A5%B5%D8"&gt;百度贴吧: 绘画圣地&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="65f691"&gt;自学经验&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://book.douban.com/review/1764982/"&gt;自学素描--一个绘画爱好者的自述&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="ebf4cf"&gt;我的左手&lt;/h2&gt;
+&lt;p&gt;附处女作，还是无脑涂鸦的水平。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="我的左手" src="/static/images/mydrawings/my-left-hand.jpg"/&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Sat, 07 Jun 2014 10:50:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-06-07:life/learn-to-draw.html</guid><category>绘画</category><category>反思</category></item><item><title>计划将博客迁回国内</title><link>http://suxing304.github.io/life/moving-blog-back-to-china.html</link><description>&lt;p&gt;基于种种靠谱的不靠谱的考虑，近期计划将博客迁到国内的阿里云主机，目前正在筹备备案的事情。。。&lt;/p&gt;
+&lt;p&gt;最近一段时间，博客访问可能不太稳定，也可能暂时停止对外访问，抱歉。&lt;/p&gt;
+&lt;p&gt;人在江湖混，总归是要妥协一些事情的。&lt;/p&gt;
+&lt;h2 id="9edd20"&gt;阿里云服务器配置&lt;/h2&gt;
+&lt;p&gt;依然使用最便宜的服务器，1核心512M内存1Mbps带宽，每月55RMB。阿里云上的的debian系统只提供已经被淘汰的debian6，参考linode上的一篇&lt;a href="https://library.linode.com/upgrading/upgrade-to-debian-7-wheezy"&gt;文章&lt;/a&gt;升级到debian7，然后参考digitalocean上的一篇&lt;a href="https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04"&gt;文章&lt;/a&gt;创建交换空间。最后设置下服务器的&lt;a href="/note/linux_host-security.html"&gt;安全策略&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;创建交换空间的时候发现磁盘写入速度只有30M/s左右，应该是机械硬盘，digitalocean上大概是150M/s，速度差距很大的说。不过网速还可以的说，系统升级不用10分钟就结束了。CPU和digitalocean的差距应该不大，编译博客的时间比原来慢两三秒。&lt;/p&gt;
+&lt;h2 id="ae2b24"&gt;2014-05-20&lt;/h2&gt;
+&lt;p&gt;中午在阿里云提交了备案初审的申请，下午就通过了，接下来是最麻烦的照相部分。上海的拍照点很少，还都是工作时间才可以拍，果断申请幕布自己拍。&lt;/p&gt;
+&lt;p&gt;阿里云发了顺丰快递，估计明天幕布就能到。&lt;/p&gt;
+&lt;h2 id="e369b8"&gt;2014-05-21&lt;/h2&gt;
+&lt;p&gt;上班路上顺便把信息安全管理协议和核验单的原件寄到阿里云的洛阳办事处，用了EMS，估计要两三天才能到，又贵又慢，只为图方便。今天顺丰快递没把幕布送到，网上查了下，包裹还在北京没动。客服妹子耐心委婉的解释说飞机出了问题，估计得明天了。&lt;/p&gt;
+&lt;p&gt;阿里云的服务器用了两天，最大的感受就是，ssh登录后，不管是运行命令还是编辑文件，和在本地机器上没有什么区别，毫无延迟的感觉。ping了下，平均延迟十几毫秒，丢包率为0，这就是墙内的好处了吧。&lt;/p&gt;
+&lt;p&gt;阿里云的硬件不比国外的linode和digitalocean，但是客服还是挺到位的，发ticket和论坛发帖，响应都挺及时。另外，服务器的套餐可以随时升级，这点也可以点个赞。&lt;/p&gt;
+&lt;h2 id="f714b0"&gt;2014-05-22&lt;/h2&gt;
+&lt;p&gt;顺丰在延误了一天之后，终于把拍照用的幕布送到了，晚上在家里搞了接近一个时终于把照片拍了出来。还好RX100有个识别人脸并自动拍摄的功能，不然估计现在都搞不定。另外照片拍好后还要裁剪成800x600像素，win7自带的画图程序不太好用，ps又不会用，最后在网上查了下，用美图秀秀不到五分钟搞定了。。。照片提交之后还要等待阿里云审核，如果审核不过，我打算直接请假去指定地点拍了，一个人搞自拍真心太累。&lt;/p&gt;
+&lt;h2 id="17c975"&gt;2014-05-23&lt;/h2&gt;
+&lt;p&gt;审核资料已经寄到且通过了阿里云的审核，照片也审核通过，接下来就等通管局了。&lt;/p&gt;
+&lt;p&gt;还没下班就收到通管局的短信说备案通过了，原本还打算要坚持久战来着，没想到不用两个小时就结束战斗了。这边的办事效率出奇的高啊。&lt;/p&gt;
+&lt;p&gt;不知是不是我使用方法不对，&lt;del&gt;感觉阿里云的cdn服务就一大坑&lt;/del&gt;，是我太白痴配置错了晕。&lt;/p&gt;
+&lt;h2 id="925f38"&gt;2014-05-27&lt;/h2&gt;
+&lt;p&gt;&lt;del&gt;阿里云的cdn目前不支持CORS(跨域资源共享)配置&lt;/del&gt;，具体问题就是如果把font-awesome单独部署到cdn子域上，firefox和ie无法加载字体文件，报错&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;CSS3117: @font-face 跨源请求失败
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;解决办法就是用别家的cdn，或者把整个博客放到cdn上。&lt;/p&gt;
+&lt;p&gt;又白痴了，跨域问题可以通过白名单来解决，不过要等cdn的缓存刷新后才有效。&lt;/p&gt;
+&lt;h2 id="ec3561"&gt;2014-05-28&lt;/h2&gt;
+&lt;p&gt;抽空用&lt;a href="https://code.google.com/p/byte-unixbench/"&gt;UnixBench&lt;/a&gt;测试了下系统性能，综合得分1475.7，详细报告&lt;a href="/static/plain/aliyun-1cpu512ram-unixbench-report-20140528.txt"&gt;此&lt;/a&gt;和&lt;a href="/static/plain/aliyun-1cpu512ram-unixbench-report-20140529.txt"&gt;此&lt;/a&gt;，和之前用的同级别的digitalocean vps差不多，do的报告在&lt;a href="/static/plain/digitalocean-512m-unixbench-report-20140313.txt"&gt;此&lt;/a&gt;。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Tue, 20 May 2014 11:28:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-05-20:life/moving-blog-back-to-china.html</guid><category>备案</category><category>VPS</category></item><item><title>天籁之音 中国风轻音乐</title><link>http://suxing304.github.io/collection/chinese-music.html</link><description>&lt;p&gt;收集一些唯美的中国风轻音乐，歌曲均来自虾米。&lt;/p&gt;
+&lt;p&gt;
+&lt;div class="hermit" xiami="collect:31181538" netease="" loop="1" auto="0"&gt;
+    &lt;div class="hermit-box"&gt;
+        &lt;div class="hermit-controls"&gt;
+            &lt;div class="hermit-button"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-detail"&gt;
+                单击鼠标左键播放或暂停
+            &lt;/div&gt;
+            &lt;div class="hermit-duration"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-volume"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-listbutton"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="hermit-prosess"&gt;
+            &lt;div class="hermit-loaded"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-prosess-bar"&gt;
+                &lt;div class="hermit-prosess-after"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="hermit-list" style=""&gt;
+    &lt;/div&gt;
+    &lt;div class="hermit-add-list" style=""&gt;
+        
+&lt;div class="hermit-add-song" data-url="http://dl.atime.me/music/秦时明月/一舞倾城.mp3" data-title="一舞倾城" data-author="秦时明月之诸子百家"&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2 id="ccaceb"&gt;一舞倾城&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="雪女 一舞倾城" src="/static/images/cartoon/QinShiMingYue-XueNv-YiWuQingCheng.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;&amp;lt;秦时明月之诸子百家&amp;gt;&amp;gt;里雪女起舞的背景音乐，惊艳。&lt;/p&gt;
+&lt;h2 id="f661d9"&gt;琵琶语&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="潮州印象 湘子桥" src="/static/images/collection/ChaoZhou-XiangZiQiao.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="text-muted"&gt;图片取自&lt;a href="http://citylife.house.sina.com.cn/detail.php?gid=3006"&gt;http://citylife.house.sina.com.cn/detail.php?gid=3006&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;记忆里很小的时候就听过这个曲调，但一直不知道是什么曲子，纠结了好多年的说。每次听的时候，不知道为什么脑海里总是不由自主的浮现出对厦门和潮州的想象，将来一定要去几次才行。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Thu, 15 May 2014 23:01:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-05-15:collection/chinese-music.html</guid><category>天籁之音</category><category>音乐</category><category>轻音乐</category><category>中国风</category></item><item><title>网站被光荣的认证了</title><link>http://suxing304.github.io/life/what-should-I-say.html</link><description>&lt;p&gt;今天一早看到新闻说一批小说站点因为涉黄被和谐了，有两个罪行严重的站长直接被刑拘了，我对此表示沉默，然后我刷新了下自己的博客，gan，我骄傲的发现自己的博客也被认证了，我想我只能继续沉默。&lt;/p&gt;
+&lt;p&gt;凌乱中，我得再想想。&lt;/p&gt;
+&lt;h2 id="a11645"&gt;2014-05-08&lt;/h2&gt;
+&lt;p&gt;回家竟然能正常访问，工作地点就得翻墙，这是所谓的选择性和谐还是怎么的。&lt;/p&gt;
+&lt;p&gt;也有可能是我自己的网络问题。。。&lt;/p&gt;
+&lt;p&gt;从&lt;a href="https://www.startssl.com/"&gt;startssl&lt;/a&gt;申请了一个免费的ssl证书，&lt;del&gt;现在的博客强制使用https协议访问了，不知道有没有用。&lt;/del&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Wed, 07 May 2014 17:34:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-05-07:life/what-should-I-say.html</guid><category>凌乱中</category></item><item><title>C++函数调用过程解析</title><link>http://suxing304.github.io/research/what-happens-when-calling-a-cpp-function.html</link><description>&lt;p&gt;用一个简单的例子解释C++函数调用的过程，备忘。&lt;/p&gt;
+&lt;h2 id="122670"&gt;实验环境&lt;/h2&gt;
+&lt;p&gt;以下是本次实验的环境配置&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;* 操作系统: Ubuntu 14.04 x86_64
+* 编译器: gcc-4.8.2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="0ba51e"&gt;开始之前&lt;/h2&gt;
+&lt;h3 id="81f5d5"&gt;阅读资料&lt;/h3&gt;
+&lt;p&gt;开始之前，建议先阅读如下几篇文章，对call stack和asm多少有点了解，下文会涉及到很多这方面的东西。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ualberta.ca/CNS/RESEARCH/LinuxClusters/mem.html"&gt;Understanding Memory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Call_stack"&gt;Wikipedia:call stack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://cseweb.ucsd.edu/classes/sp10/cse141/pdf/02/S01_x86_64.key.pdf"&gt;A Readers Guide to x86 Assembly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Function_prologue"&gt;Wikipedia:function prologue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="81f5dd"&gt;预备知识&lt;/h3&gt;
+&lt;p&gt;下面是一些在后面的解释中会用到的知识，以下说明均基于x86-64平台。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;栈(call stack, runtime stack或stack): 在Linux上我们编译程序后一般生成的可执行文件是ELF格式的，下图是一个简化版的ELF文件结构&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;+----------------------+
+|       ... ...        |
++----------------------+
+|        .text         | &amp;lt;- 程序的可执行指令
++----------------------+
+|       ... ...        |
++----------------------+
+|        .data         | &amp;lt;- 初始化的全局和静态变量
++----------------------+
+|        .bss          | &amp;lt;- 未初始化的全局和静态变量
++----------------------+
+|       ... ...        |
++----------------------+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可执行文件将会在运行时被载入内存中，下面是一个简化的进程虚拟地址空间图。&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;+----------------------+ &amp;lt;- 高地址处
+|       ... ...        |
++----------------------+ 
+|        stack         | &amp;lt;- 本文的主角，call stack，向低地址处生长
++----------------------+ 
+|       ... ...        |
++----------------------+ 
+|        heap          | &amp;lt;- 动态分配的内存，向高地址处生长
++----------------------+
+|  uninitialized data  | &amp;lt;- 未初始化的全局变量和静态变量
++----------------------+
+|   initialzed data    | &amp;lt;- 初始化的全局和静态变量，从ELF的.data区载入
++----------------------+
+|        code          | &amp;lt;- 程序代码，从ELF的.text区载入
++----------------------+
+|       ... ...        |
++----------------------+ &amp;lt;- 低地址处
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寄存器:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;%rax: 通常用于返回第一个整数。&lt;/li&gt;
+&lt;li&gt;%rbp: base pointer，指向当前frame的底部附近(caller的%rbp)。&lt;/li&gt;
+&lt;li&gt;%rsp: stack pointer，用于保存最新分配的frame的顶部，也就是stack顶部。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;调用者(caller)和被调用者(callee): 在函数foo的上下文中，调用者(caller)就是main函数，被调用者(callee)就是foo函数。&lt;/li&gt;
+&lt;li&gt;stack frame: stack是由一个个的stack frmae组成的，每次函数调用都会在栈上分配一个新的frame，该frame内保存了当前函数调用的上下文信息，包括请求参数(可能直接保存在寄存器中&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;)，返回地址和局部变量等内容。&lt;/li&gt;
+&lt;li&gt;返回地址: callq指令会在调用函数的时候将下一条指令的地址push到stack上，当本次调用结束后，retq指令会跳转到被保存的返回地址处使程序继续执行。&lt;/li&gt;
+&lt;li&gt;stack上的数据是&lt;a href="http://www.ibm.com/developerworks/library/pa-dalign/"&gt;字节对齐&lt;/a&gt;的。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;stack由高地址处向低地址处生长，在下图中&lt;code&gt;16(%rbp)&lt;/code&gt;表示地址&lt;code&gt;16 + value of register[%rbp]&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;+----------------------+ &amp;lt;- 高地址处
+|       ... ...        |
++----------------------+ 
+|      parameters      | &amp;lt;- 没有保存到寄存器里的callee的函数参数(如果有的话)
++----------------------+ &amp;lt;- 16(%rbp) + n*8 n=0,1,2,3 ...
+|    return address    | &amp;lt;- callee的返回地址，callee的stack frame开始处
++----------------------+ &amp;lt;- 8(%rbp)
+|     caller's %rbp    | &amp;lt;- 保存的是caller的%rbp
++----------------------+ &amp;lt;- (%rbp) 
+|    saved registers   | &amp;lt;- 最开始是在函数调用中会被占用的寄存器(如果有的话)，调用结束后恢复
++----------------------+
+| callee's locals etc. | &amp;lt;- 之后是函数内定义的局部变量和临时变量(保存函数参数寄存器等)
++----------------------+
+|       ... ...        |
++----------------------+
+|      parameters      | &amp;lt;- callee的callee的函数参数(如果有的话)
++----------------------+ &amp;lt;- n*8(%rsp) n=0,1,2,3 ...
+|       ... ...        | &amp;lt;- 栈顶，calleee的stack frame结束处
++----------------------+ &amp;lt;- (%rsp)
+|       ... ...        |
++----------------------+ &amp;lt;- 低地址处
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;当callee的函数参数太多(或存在不能存储到寄存器上的参数类型)时，多余的函数参数会按照从右向左的顺序依次入栈，占用caller的stack frame的空间。&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;汇编指令:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;leaveq: 相当于以下两条指令&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;mov %rbp, %rsp // 将栈顶指针指向caller的frame指针
+pop %rbp       // 将caller的frame指针出栈并保存于%rbp中
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;callq: 将下一条指令的地址入栈，然后跳转到目标地址处执行&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref" href="#fn:5" rel="footnote"&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;retq: 将返回地址出栈并跳转到该地址处继续执行&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref" href="#fn:5" rel="footnote"&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="334fe1"&gt;简单的例子&lt;/h2&gt;
+&lt;p&gt;下面是一个非常简单的例子。&lt;/p&gt;
+&lt;h3 id="ba0431"&gt;cpp源代码&lt;/h3&gt;
+&lt;p&gt;&lt;script src="https://gist.github.com/mawenbao/96dbd44c385764ed90b0.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;使用如下命令编译&lt;code&gt;call_stack_example.cpp&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;g++ -g -O0 -fno-stack-protector call_stack_example.cpp -o a.out
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;为了让汇编代码更简单，我们在编译选项里使用&lt;code&gt;-fno-stack-protector&lt;/code&gt;，这可以禁止gcc默认启用的Stack Protection&lt;sup id="fnref:6"&gt;&lt;a class="footnote-ref" href="#fn:6" rel="footnote"&gt;6&lt;/a&gt;&lt;/sup&gt;，关于Stack Protection的详细信息可参考&lt;a href="http://en.wikipedia.org/wiki/Buffer_overflow_protection"&gt;Buffer overflow protection&lt;/a&gt;和&lt;a href="ftp://gcc.gnu.org/pub/gcc/summit/2003/Stackguard.pdf"&gt;StackGuard: Simple Stack Smash Protection for GCC&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id="7a9dea"&gt;汇编代码和注释&lt;/h3&gt;
+&lt;p&gt;然后使用&lt;code&gt;objdump&lt;/code&gt;输出汇编代码&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;objdump -dS a.out -j .text
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;下面是call_stack_example.cpp内三个函数的汇编代码和注释，gcc默认使用的是AT&amp;amp;T汇编语法。&lt;/p&gt;
+&lt;script src="https://gist.github.com/mawenbao/becea4b6acdc9d3dfb14.js"&gt;&lt;/script&gt;
+&lt;h2 id="d340b5"&gt;其他例子&lt;/h2&gt;
+&lt;h3 id="a5e35d"&gt;函数参数传递&lt;/h3&gt;
+&lt;p&gt;下面的例子取自&lt;a href="http://www.x86-64.org/documentation/abi-0.99.pdf"&gt;System V Application Binary Interface&lt;/a&gt;的图3.5 Parameter Passing Example和图3.6 Register Allocation Example&lt;/p&gt;
+&lt;p&gt;假设有以下结构体和函数&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;typedef struct {
+    int a, b;
+    double d;
+} structparm;
+
+extern void func(
+    int e,
+    int f,
+    structparm s,
+    int g,
+    int h,
+    long double ld,
+    double m,
+    __m256 y,
+    double n,
+    int i,
+    int j,
+    int k);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后如下调用函数func:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;structparm s;
+int e, f, g, h, i, j, k;
+long double ld;
+double m, n;
+__m256 y;
+
+func (e, f, s, g, h, ld, m, y, n, i, j, k);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;则函数参数的传递方式如下表&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;General Purpose Registers&lt;/th&gt;
+&lt;th&gt;Floating Point Registers&lt;/th&gt;
+&lt;th&gt;Stack Frame Offset&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;%rdi: e&lt;/td&gt;
+&lt;td&gt;%xmm0: s.d&lt;/td&gt;
+&lt;td&gt;0: ld&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%rsi: f&lt;/td&gt;
+&lt;td&gt;%xmm1: m&lt;/td&gt;
+&lt;td&gt;16: j&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%rdx: s.a, s.b&lt;/td&gt;
+&lt;td&gt;%ymm2: y&lt;sup id="fnref:7"&gt;&lt;a class="footnote-ref" href="#fn:7" rel="footnote"&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+&lt;td&gt;24: k&lt;sup id="fnref:8"&gt;&lt;a class="footnote-ref" href="#fn:8" rel="footnote"&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%rcx: g&lt;/td&gt;
+&lt;td&gt;%xmm3: n&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%r8:  h&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%r9:  i&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="ee37a7"&gt;额外阅读资料&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.x86-64.org/documentation/abi-0.99.pdf"&gt;System V Application Binary Interface&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.x86-64.org/documentation/assembly.html"&gt;Gentle Introduction to x86-64 Assembly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.classes.cs.uchicago.edu/archive/2009/spring/22620-1/docs/handout-03.pdf"&gt;x86-64 Machine-Level Programming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.scs.stanford.edu/nyu/04fa/notes/l2.pdf"&gt;Review of assembly language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://turkeyland.net/projects/overflow/crash.php"&gt;Buffer Overflows and You&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.win.tue.nl/~aeb/linux/hh/protection.html"&gt;Protection against buffer overflows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://eli.thegreenplace.net/2011/09/06/stack-frame-layout-on-x86-64/"&gt;Stack frame layout on x86-64&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.tenouk.com/Bufferoverflowc/Bufferoverflow2a.html"&gt;BUFFER OVERFLOW 6: The Function Stack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html"&gt;Linux x86 Program Start Up&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff561499(v=vs.85).aspx"&gt;x64 Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://cocoafactory.com/blog/2012/11/23/x86-64-assembly-language-tutorial-part-1/"&gt;X86_64 Assembly Language Tutorial: Part 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://people.freebsd.org/~lstewart/references/amd64.pdf"&gt;Amd64 Overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="footnote"&gt;
+&lt;hr/&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;&lt;a href="http://linux.die.net/man/5/elf"&gt;man elf&lt;/a&gt;，引用于2014-05-07。 &lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;关于参数是否通过寄存器传递的具体细则，请参考&lt;a href="http://www.x86-64.org/documentation/abi-0.99.pdf"&gt;System V Application Binary Interface&lt;/a&gt;的&lt;code&gt;3.2.3 Parameter Passing&lt;/code&gt;部分。 &lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;参考&lt;a href="http://www.x86-64.org/documentation/abi-0.99.pdf"&gt;System V Application Binary Interface&lt;/a&gt;的3.2 Function Calling Sequence，引用于2014-05-07。 &lt;a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:4"&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Function_prologue"&gt;Wikipedia:function prologue&lt;/a&gt;, 引用于2014-05-04。  &lt;a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:5"&gt;
+&lt;p&gt;&lt;a href="https://www.cs.uaf.edu/2012/fall/cs301/lecture/09_24_call_and_ret.html"&gt;Call vs Jmp: The Stack Connection&lt;/a&gt;，引用于2014-05-05。 &lt;a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:6"&gt;
+&lt;p&gt;参考&lt;code&gt;man gcc&lt;/code&gt;中关于&lt;code&gt;-fstack-protector&lt;/code&gt;选项的说明。 &lt;a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 6 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:7"&gt;
+&lt;p&gt;%ymm0-%ymm15是256位的浮点数寄存器，其低128位对应%xmm0-%xmm15 &lt;a class="footnote-backref" href="#fnref:7" rev="footnote" title="Jump back to footnote 7 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:8"&gt;
+&lt;p&gt;栈上的函数参数要按8字节对齐 &lt;a class="footnote-backref" href="#fnref:8" rev="footnote" title="Jump back to footnote 8 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Thu, 01 May 2014 14:48:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-05-01:research/what-happens-when-calling-a-cpp-function.html</guid><category>cpp</category><category>callstack</category><category>函数调用</category></item><item><title>[转]糗事百科精选5</title><link>http://suxing304.github.io/collection/qiushibaike5.html</link><description>&lt;p&gt;收集糗事百科上的趣事。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike.html"&gt;糗事百科精选&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike2.html"&gt;糗事百科精选2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike3.html"&gt;糗事百科精选3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike4.html"&gt;糗事百科精选4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike5.html"&gt;糗事百科精选5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike6.html"&gt;糗事百科精选6&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="c39189"&gt;任尔东南西北风 我自岿然不动&lt;/h2&gt;
+&lt;p&gt;我最糗的一次事件就是初中那次,去脱同桌的裤子,当时他在操场上背对着我,我上去一下把内外裤直接脱光,小丁丁在风中摇曳,以为他得以最快的速度穿起来然后追打我,那晓得那人渣,也不转身也不穿裤子,当时操场上几百人是有的,都盯着他老师也在看,劳资在众目睽睽之下,怀着忐忑复杂的心情只有过去给他拉起来.给他穿起来..&lt;/p&gt;
+&lt;h2 id="e5e20c"&gt;活该撞花池上&lt;/h2&gt;
+&lt;p&gt;前两天大表哥买了辆二手奥拓，非要载我去逛街，我看那破破烂烂的汽车就真心找不出地方夸两句，正好大表哥按喇叭，声音嘎嘣脆的，我就说，大表哥你这车可以啊，喇叭挺脆的，他说当然了，刹车不灵就算了，喇叭再不好使还怎么开，尼玛～活该撞花池上！&lt;/p&gt;
+&lt;h2 id="233187"&gt;Home, Sweet Home&lt;/h2&gt;
+&lt;p&gt;下面是&lt;a href="http://www.pascalcampion.com/"&gt;Pascal Campion&lt;/a&gt;的作品，在qb上看到的。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="甜蜜的家" src="/static/images/qiushibaike/HomeSweetHome.jpg" width="350px"/&gt;&lt;/p&gt;
+&lt;h2 id="8bf4a1"&gt;夸我长的高&lt;/h2&gt;
+&lt;p&gt;今天和老妈去吃酒席，去之前老妈教我，出去嘴要甜一点，说看见别人小孩长得还过去的就要夸奖人家长得好漂亮，实在看着丑的就夸奖别人长得好高，割割割，吃个饭已经有好多人夸我长得高了。&lt;/p&gt;
+&lt;h2 id="8e58a3"&gt;合租的猫&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="合租的猫" src="/static/images/qiushibaike/HeZuDeMao.jpg" width="350px"/&gt;&lt;/p&gt;
+&lt;h2 id="7d8a86"&gt;悲剧&lt;/h2&gt;
+&lt;p&gt;上学上体育课，老师喊集合，个个慢的要死。老师:你们这帮学生吃屎都抢不过狗。从角落里传出一个声音:就你能。小明，卒，享年15。&lt;/p&gt;
+&lt;h2 id="537d03"&gt;比梦还可怕&lt;/h2&gt;
+&lt;p&gt;我睁开眼睛，习惯性的拿出手机看时间，不看还好，一看下一跳，尼玛九点整，上班迟到了。我吓得从床上弹起来，缓过神来，卧槽，原来是个梦，吓死我了。拿出手机看看，
+//(o)//我日，十点半。&lt;/p&gt;
+&lt;h2 id="4cfad2"&gt;no zuo no die&lt;/h2&gt;
+&lt;p&gt;为了给女朋友去证明我在网上买的烟机灶具比实体店便宜一千多，我专门去实体店调查一番，我果然赚到了，美中不足是我两千多的电动车在实体店门口被偷了。 no zuo no die&lt;/p&gt;
+&lt;h2 id="0d74f2"&gt;后果不堪设想&lt;/h2&gt;
+&lt;p&gt;侄女考试回来，姐姐一看分数大发雷霆：一天在读什么书，考你妈76分，拿来干什么？侄女拿过试卷，然后肯定的说：妈妈，你看错了，是26分。然后…&lt;/p&gt;
+&lt;h2 id="d087eb"&gt;别馋我&lt;/h2&gt;
+&lt;p&gt;如果你在沙发上吃零食，你就会看到这一张脸！&lt;/p&gt;
+&lt;p&gt;&lt;img alt="别馋我" src="/static/images/qiushibaike/BieChanWo.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="4f4500"&gt;这句稍微有点经典&lt;/h2&gt;
+&lt;p&gt;义愤填膺的都是网友，冷漠无情的都是路人，也不知道是网友都不上街，还是路人都不上网。&lt;/p&gt;
+&lt;h2 id="91e895"&gt;惺惺相惜&lt;/h2&gt;
+&lt;p&gt;最近天气热LZ理了个光头，刚刚去超市买东西，一个三岁左右小孩也是理了光头，手里拿了两包旺仔小馒头。抬头看见我，先是一呆，然后摸了摸头，伸手递了一包旺仔小馒头给我，哈哈哈哈哈，瞬间觉得超级可爱，好有爱的宝宝···&lt;/p&gt;
+&lt;h2 id="8f4b9c"&gt;大学生眼中的对方&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="大学生眼中的对方" src="/static/images/qiushibaike/DaXueShengYanZhongDeDuiFang.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="text-muted"&gt;来源网络&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;简要解释几个关键点，理科男看文科男像东方不败，文科男看理科男像金毛狮王，文科男看理科女像灭绝师太，文科女看理科女像晚年的梅超风。。。&lt;/p&gt;
+&lt;h2 id="efaa56"&gt;太热了&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="太热了" src="/static/images/qiushibaike/PandaTooHot.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="474f81"&gt;骑车的时候不要看短信&lt;/h2&gt;
+&lt;p&gt;下班骑电动车回家……突然接到妈妈发来的一条短信：路上注意安全，好好骑车，别看短信。…………本来骑着好好的，一下就撞电线杆上了…………&lt;/p&gt;
+&lt;h2 id="295984"&gt;戒酒or戒老婆&lt;/h2&gt;
+&lt;p&gt;一哥们和老婆说，我打算戒酒了，如果看见我喝一次你就三天别让我碰你！老婆欣然同意了！……之后的一个月里这哥们几乎天天喝酒！最后老婆受不了了怒骂:ntm到底是戒酒还是戒我啊？&lt;/p&gt;
+&lt;h2 id="14e18e"&gt;吃一堑长一智。。。也没用&lt;/h2&gt;
+&lt;p&gt;有一次和朋友们吃饭，结果众人皆醉，唯我独醒，不是我请客啊，草草草，没办法，只能我结账了。又一次一起吃饭，这次我变精明了，吃的快差不多的时候我装醉了，结果我惊愕的发现这群贱人在掏老子钱包，尼玛，你们怎么不去死！！！&lt;/p&gt;
+&lt;h2 id="6537bd"&gt;祸不单行&lt;/h2&gt;
+&lt;p&gt;一个爆脾气的哥们，，割们，，学校不让用吹风机，他偷着用，一天查舍的时候被舍管拿走了，他回来听说被舍管拿走了，当时就发火了。提着砍刀就去找舍管去了，不一会儿回来了，刀也被没收了。。。。。&lt;/p&gt;
+&lt;h2 id="576acc"&gt;不按套路出牌&lt;/h2&gt;
+&lt;p&gt;周末和老妈一起逛街，一个和尚拿着符还有手串非要卖给我们，10块钱一样，你们懂的。我拉着老妈就走，说：“我们全家信耶稣的，不要这玩意。”没想到那和尚从布袋里掏出一十字架非要卖我！你咋不按套路出牌呢！&lt;/p&gt;
+&lt;h2 id="ed74c8"&gt;无题&lt;/h2&gt;
+&lt;p&gt;第一次发，实在hold不住了，就刚刚睡午觉在，二货老婆想偷看我手机，手机锁屏是刚下载类似5S的恶搞指纹解锁，其实只要下拉就会解开，接着二货老婆就轻轻的拿起我的手按住屏幕试图解锁，接下来的五分钟内，把我十个手指头都试遍了有没有，我在旁边装睡憋到内伤有没有，家有二货老婆其实挺可爱的。&lt;/p&gt;
+&lt;h2 id="a037f2"&gt;太伤人了&lt;/h2&gt;
+&lt;p&gt;今天最后一节课，快要下课时，老师抬头看了一下钟，问到:“下课了没，我可不想占用大家吃饭的时间。”角落一声音回答:“没事的老师，看见你我们就饱了……”老师一脸黑线。&lt;/p&gt;
+&lt;h2 id="ca8f0a"&gt;太机智了&lt;/h2&gt;
+&lt;p&gt;住院中、 术后每天都要输液。这是背景&lt;/p&gt;
+&lt;p&gt;有一个很萝莉但个头比较矮的护士，来送液体，因为输液杆比较高，小护士踮起脚尖还是很难挂上去，我那浪里格浪的老表在护士后面说：来，我帮你吧。 小护士：哦，那谢谢… 话还没说完，就被我那老表抱了起来。&lt;/p&gt;
+&lt;p&gt;擦、这畜牲太机智了，画面脑补&lt;/p&gt;
+&lt;h2 id="da8ed5"&gt;坑爹&lt;/h2&gt;
+&lt;p&gt;小时候我爸中午下班回家吃过饭就午休，我从小不爱睡觉，我爸就说你一点五十叫我起床，我说好，然后从我爸躺下的那一刻每过五分钟我都朝我爸屋里喊一句一点五分啦、一点十分啦、一点三十五啦、一点四十五啦，然后看表五十了，我就背着书包上学去了，然后那天我爸就迟到了。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Wed, 30 Apr 2014 10:02:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-04-30:collection/qiushibaike5.html</guid><category>糗事百科</category><category>笑话</category><category>转载</category></item><item><title>输出并解析C++的调用堆栈</title><link>http://suxing304.github.io/research/glibc-backtrace-parsing.html</link><description>&lt;p&gt;本文简要介绍在Linux上输出和解析C++的call stack的方法。&lt;/p&gt;
+&lt;p&gt;开发环境:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;* 编译器: gcc 4.8.2
+* 操作系统: Ubuntu 14.04 x86_64
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="158cb2"&gt;输出调用堆栈&lt;/h2&gt;
+&lt;p&gt;glibc中提供了&lt;code&gt;backtrace()&lt;/code&gt;和&lt;code&gt;backtrace_symbols()&lt;/code&gt;两个函数来输出和解析程序的call stack，详情见&lt;code&gt;man backtrace&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;下面的代码修改自backtrace手册里的例子，当程序收到SIGSEGV信号（内存访问越界）时，输出程序的调用堆栈，以方便定位崩溃点。&lt;/p&gt;
+&lt;script src="https://gist.github.com/mawenbao/11278165.js"&gt;&lt;/script&gt;
+&lt;p&gt;这段代码在第29行必然会引发内存访问越界。&lt;/p&gt;
+&lt;p&gt;使用如下的命令编译代码，这是release版本&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;g++ -rdynamic -o test.r test_backtrace.cpp
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;为了解析文件的行号等信息，我们还需要一个debug版本&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;g++ -rdynamic -g -o test.d test_backtrace.cpp
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上面的编译命令中，加入&lt;code&gt;-rdynamic&lt;/code&gt;可以将所有非static全局变量和非static函数的符号输出到符号表中。如果你不想在release版本中使用&lt;code&gt;-rdynamic&lt;/code&gt;选项，编译debug版本的时候也不能用，否则符号表会不一致，从而影响后面的解析过程。&lt;/p&gt;
+&lt;h2 id="d62db7"&gt;解析bactrace输出&lt;/h2&gt;
+&lt;p&gt;运行上面的程序，输出如下&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;./test.r(_Z18print_stack_framesi+0x25) [0x400a02]
+/lib/x86_64-linux-gnu/libc.so.6(+0x36ff0) [0x7f7ddcfb6ff0]
+./test.r(_Z7myfunc2i+0xe) [0x400ab4]
+./test.r(_Z6myfuncv+0x19) [0x400ad1]
+./test.r(main+0x23) [0x400af6]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5) [0x7f7ddcfa1ec5]
+./test.r() [0x400919]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;每一行的中括号里的十六进制数是返回地址，小括号里加号之前的内容是mangle后的函数名称，加号之后的十六进制数是返回地址相对函数地址的偏移量。&lt;/p&gt;
+&lt;p&gt;以第一行为例，首先解析函数名，mangle后的函数名称是&lt;code&gt;_Z18print_stack_framesi&lt;/code&gt;，使用&lt;code&gt;c++filt&lt;/code&gt;命令可以将其demangle&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;c++filt _Z18print_stack_framesi
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;输出&lt;code&gt;print_stack_frames(int)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;然后使用addr2line获取返回地址所在的行号&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;addr2line -e test.d 0x400a02
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;输出&lt;code&gt;/home/wilbur/test_backtrace.cpp:13&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;需要注意的是，addr2line必须读取额外的调试信息来解析返回地址所在的行号，这也是我们之前编译debug版本的&lt;code&gt;test.d&lt;/code&gt;的原因。&lt;/p&gt;
+&lt;h2 id="b53c82"&gt;python解析脚本&lt;/h2&gt;
+&lt;p&gt;下面是一个专门解析backtrace输出的python脚本。&lt;/p&gt;
+&lt;script src="https://gist.github.com/mawenbao/11282888.js"&gt;&lt;/script&gt;
+&lt;p&gt;输入如下命令&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;./test.r | python backtrace_parser.py ./test.d
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;输出如下&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;[./test.r]  /home/wilbur/test_backtrace.cpp:13  print_stack_frames(int)
+[./test.r]  /home/wilbur/test_backtrace.cpp:29  myfunc2(int)
+[./test.r]  /home/wilbur/test_backtrace.cpp:35  myfunc()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="b933c2"&gt;backtrace和core dump&lt;/h2&gt;
+&lt;p&gt;Linux的core dump机制可以让你的程序在崩溃的时候在磁盘上保留一份gdb可调试的内存镜像。相比core dump，backtrace虽然只能提供函数的名称和行号等信息，但是胜在简便灵活。另外在生产环境中，许多时候可能不方便使用gcc的&lt;code&gt;-g&lt;/code&gt;选项编译程序，因此就算有core dump也很难用gdb进行调试。&lt;/p&gt;
+&lt;h2 id="dc9cb8"&gt;扩展阅读&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://man7.org/linux/man-pages/man5/elf.5.html"&gt;man 5 elf&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Fri, 25 Apr 2014 15:04:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-04-25:research/glibc-backtrace-parsing.html</guid><category>gcc</category><category>sigsegv</category><category>call stack</category><category>debug</category><category>linux</category></item><item><title>南京旅游图记</title><link>http://suxing304.github.io/life/nanjing-travelling-pics.html</link><description>&lt;p&gt;上周末公司组织去南京旅游，跟着去玩了两天，去的地方基本都是人文景点，总感觉不如自然景点给力。&lt;/p&gt;
+&lt;p&gt;下面是旅途中拍的照片，因为那两天南京一直是阴雨天气，拍照的效果不是很好（当然，技术差是主要原因）。照片基本都是用RX100的自动档拍的，焦点基本不受我控制，而且大部分照片都存在过曝或曝光不足的问题，懒得搞后期了。&lt;/p&gt;
+&lt;h2 id="e318ae"&gt;中山陵&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="中山陵1" src="/static/images/travel/nanjing/DSC02679.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵1&lt;/p&gt;
+&lt;p&gt;&lt;img alt="中山陵 松树" src="/static/images/travel/nanjing/DSC02680.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵松树，这张貌似又过曝了&lt;/p&gt;
+&lt;p&gt;&lt;img alt="中山陵2" src="/static/images/travel/nanjing/DSC02687.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵2，这张曝光不足&lt;/p&gt;
+&lt;p&gt;&lt;img alt="中山陵3" src="/static/images/travel/nanjing/DSC02707.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵3&lt;/p&gt;
+&lt;p&gt;&lt;img alt="中山陵4" src="/static/images/travel/nanjing/DSC02718.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵4&lt;/p&gt;
+&lt;p&gt;&lt;img alt="中山陵5" src="/static/images/travel/nanjing/DSC02725.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵5&lt;/p&gt;
+&lt;p&gt;&lt;img alt="中山陵6" src="/static/images/travel/nanjing/DSC02743.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵6，人真的很多&lt;/p&gt;
+&lt;p&gt;&lt;img alt="中山陵 鼎" src="/static/images/travel/nanjing/DSC02749.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵 鼎&lt;/p&gt;
+&lt;p&gt;&lt;img alt="中山陵 什么树" src="/static/images/travel/nanjing/DSC02769.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;中山陵 不知道什么树&lt;/p&gt;
+&lt;h2 id="b89d90"&gt;夫子庙和乌衣巷&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="夫子庙" src="/static/images/travel/nanjing/DSC02800.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;夫子庙收费，没进。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="夫子庙对面" src="/static/images/travel/nanjing/DSC02796.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;夫子庙对面&lt;/p&gt;
+&lt;p&gt;&lt;img alt="夫子庙对面2" src="/static/images/travel/nanjing/DSC02799.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;夫子庙对面2&lt;/p&gt;
+&lt;p&gt;&lt;img alt="不知名的河" src="/static/images/travel/nanjing/DSC02848.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="乌衣巷外的纪念品店" src="/static/images/travel/nanjing/DSC02850.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;乌衣巷外的纪念品店&lt;/p&gt;
+&lt;h2 id="88938f"&gt;总统府&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="总统府1" src="/static/images/travel/nanjing/DSC02890.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;总统府1 这张貌似使用光圈模式拍的，感觉还不如用自动档&lt;/p&gt;
+&lt;p&gt;&lt;img alt="总统府2" src="/static/images/travel/nanjing/DSC02895.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;总统府2 天下为公是在中山陵和总统府内出现频率最多的四字成语&lt;/p&gt;
+&lt;p&gt;&lt;img alt="总统府3" src="/static/images/travel/nanjing/DSC02925.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;总统府3&lt;/p&gt;
+&lt;p&gt;&lt;img alt="总统府4" src="/static/images/travel/nanjing/DSC02950.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;总统府4&lt;/p&gt;
+&lt;p&gt;&lt;img alt="总统府5" src="/static/images/travel/nanjing/DSC02962.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;总统府5&lt;/p&gt;
+&lt;p&gt;&lt;img alt="总统府6 蜡像" src="/static/images/travel/nanjing/DSC02993.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;总统府6 蜡像&lt;/p&gt;
+&lt;p&gt;&lt;img alt="总统府7" src="/static/images/travel/nanjing/DSC03017.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;总统府7&lt;/p&gt;
+&lt;h2 id="979ca5"&gt;玄武湖公园&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="玄武门" src="/static/images/travel/nanjing/DSC03071.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;玄武门&lt;/p&gt;
+&lt;p&gt;&lt;img alt="玄武湖1" src="/static/images/travel/nanjing/DSC03087.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;玄武湖1&lt;/p&gt;
+&lt;p&gt;&lt;img alt="玄武湖2" src="/static/images/travel/nanjing/DSC03089.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;玄武湖2&lt;/p&gt;
+&lt;p&gt;&lt;img alt="玄武湖3" src="/static/images/travel/nanjing/DSC03126.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;玄武湖3&lt;/p&gt;
+&lt;p&gt;&lt;img alt="玄武湖4" src="/static/images/travel/nanjing/DSC03147.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;玄武湖4&lt;/p&gt;
+&lt;p&gt;&lt;img alt="玄武湖5" src="/static/images/travel/nanjing/DSC03159.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;玄武湖5 又见这种树&lt;/p&gt;
+&lt;p&gt;&lt;img alt="玄武湖6" src="/static/images/travel/nanjing/DSC03181.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;玄武湖 小摊 这应该不算偷拍&lt;/p&gt;
+&lt;h2 id="12a5a4"&gt;雨花台&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="雨花台1" src="/static/images/travel/nanjing/DSC03240.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;以前一直以为雨花台是一个雨花石垒成的台子，没想到是一个纪念馆。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="雨花台纪念馆" src="/static/images/travel/nanjing/DSC03246.JPG"/&gt;&lt;/p&gt;
+&lt;p&gt;雨花台纪念馆&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Thu, 17 Apr 2014 20:43:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-04-17:life/nanjing-travelling-pics.html</guid><category>南京</category><category>旅游</category><category>照片</category></item><item><title>[转]糗事百科精选4</title><link>http://suxing304.github.io/collection/qiushibaike4.html</link><description>&lt;p&gt;收集糗事百科上的趣事。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike.html"&gt;糗事百科精选&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike2.html"&gt;糗事百科精选2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike3.html"&gt;糗事百科精选3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike4.html"&gt;糗事百科精选4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike5.html"&gt;糗事百科精选5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/collection/qiushibaike6.html"&gt;糗事百科精选6&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="9ac2f8"&gt;上次也是这么说的&lt;/h2&gt;
+&lt;p&gt;一远亲二婚，婚礼上主持人问新郎:＊％＊＆＄#你愿意吗？新郎:我愿意！我突然听到不远处的角落里传来一声:上次你也是这么说的…&lt;/p&gt;
+&lt;h2 id="c9120d"&gt;二逼驾驶员&lt;/h2&gt;
+&lt;p&gt;一男子开着普桑轿车到交警岗亭附近，对着交警大喊：我没有驾驶证，照样开车，你能拿我怎么办？交警并未理睬他，而是对着副驾驶男子说：这二逼要是考到驾驶证了，我就把你教练证和驾驶证一起吊销了。副驾驶：………&lt;/p&gt;
+&lt;h2 id="dc31e3"&gt;不要脸&lt;/h2&gt;
+&lt;p&gt;昨天晚上老公教育八岁女儿：＂你好好学习，长大后就可以当富二代了。＂女儿不服气，问：＂你又不是富一代，我怎么成富二代？＂老公说：＂你可以挣钱以后给我啊，那你不就成富二代了！＂女儿瞪圆了眼，脸憋得通红半天整出一句：＂你还要点脸不？！＂&lt;/p&gt;
+&lt;h2 id="38602b"&gt;真相帝&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="真相帝" src="/static/images/qiushibaike/ZhenXiangDi.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="47c606"&gt;有点冷的感觉&lt;/h2&gt;
+&lt;p&gt;刚刚，进楼下超市拿起瓶水就喝了起来，买单时发现钱包忘带了…瞬间脸红，为了缓解尴尬拿起烟顺手递给老板一根，这时老板也明白咧嘴笑道：“你请我抽烟，我请你喝水，礼尚往来”。哈哈！&lt;/p&gt;
+&lt;h2 id="3b38c5"&gt;没坏&lt;/h2&gt;
+&lt;p&gt;真事，今天同事带她家小萝莉到办公室来，第一次发，不格，两岁多，玩耍时在我办公室角上把头撞了，很响，一下坐地上正要哭，我说我看一下撞坏没有，撞坏了扣你妈妈的工资来陪，小萝莉忙站起来看一下说，没坏，呵呵 ，没坏。&lt;/p&gt;
+&lt;h2 id="742961"&gt;超级变换形态&lt;/h2&gt;
+&lt;p&gt;读初中时是住在学校、是12人住的这种、一天晚上几个睡不着的在打排、突然一睡着的哥们儿说梦话了、他说的是、“妈__妈__妈别打了”、边说还边哭、高潮来了、突然他说了一句、“超级变幻形态”我说兄弟、你妈把你打成啥样了、都开始变身了&lt;/p&gt;
+&lt;h2 id="86d51c"&gt;呵呵&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="微笑的狗" src="/static/images/qiushibaike/dog-smiling.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="c0d550"&gt;口味有点重&lt;/h2&gt;
+&lt;p&gt;昨天肯德基吃东西，邻桌一女刚从厕所回来，估计补了个妆，跟她一桌的一小萌娃看着她问了句“小姨，你怎么每次从厕所出来嘴巴都亮亮的，你吃屎了吗” lz顿时没忍住喷了，gc是后来萌娃哭了，因为她姨“吃屎”没带上她，，，，&lt;/p&gt;
+&lt;h2 id="5d6b4f"&gt;霸气是天生的&lt;/h2&gt;
+&lt;p&gt;一朋友家孩子回来跟她妈妈说，我们老师问谁想当班长就举手，结果全班孩子都举手了，只有一个没举手，老师问他为什么不想当班长，他说，我想当校长。&lt;/p&gt;
+&lt;h2 id="c89ba5"&gt;下意识做的事情，很有可能就是想做的事情&lt;/h2&gt;
+&lt;p&gt;读高中时，LZ有一女同桌，上课经常睡觉，由于老师过于严厉，她跟我交代说老师过来就提醒她！LZ深深地记得有一次老师走过来，我敲敲她的大腿，她大喊一声：你TM摸我大腿干嘛。。。好吧，她逃过了老师的制裁，而LZ却因为骚扰被叫了家长。。。&lt;/p&gt;
+&lt;h2 id="9963eb"&gt;约会分歧&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="约会分歧" src="/static/images/qiushibaike/yuehuifenqi.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="0be4c4"&gt;变脸&lt;/h2&gt;
+&lt;p&gt;游泳时候看见个妹子，不卸妆就下水了，蛙泳。第一次抬头变成烟熏，第二次抬头有点儿哥特范儿，第三次抬头隐约看到了国宝，第四次抬头就跟矿难现场似的………&lt;/p&gt;
+&lt;h2 id="72dfa6"&gt;喵星人拥有强大的学习能力&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="喵星人拥有强大的学习能力" src="/static/images/qiushibaike/CatLearnsFast.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="1af220"&gt;我骄傲&lt;/h2&gt;
+&lt;p&gt;今儿lz做了一件好事儿:去早了在火车站溜达，一兄台一瘸一拐的托着个碗过来要钱，碗刚伸到我面前lz习惯性的往里弹了一截烟灰，然后就被健步如飞的他大步流星的追了小半个广场，还好我及时护住了脸...能治好他的腿疾，我骄傲！&lt;/p&gt;
+&lt;h2 id="b73bdf"&gt;不许冤枉人&lt;/h2&gt;
+&lt;p&gt;早上走路去公交车站！走到35°度角斜坡上路遇一狗狗，格格巫.........这货斜斜的瞄了我一眼然后坐下翘起后腿挠痒痒，结果这货没坐稳滚下去了.........下去了！丫爬起来就对我狂叫啊！尼玛...........关我啥事儿&lt;/p&gt;
+&lt;h2 id="9b898c"&gt;幸好扔的快&lt;/h2&gt;
+&lt;p&gt;今天和一哥们去打水，回宿舍的路上听见暖壶哧哧呢响，他问我什么声音，我顺口说“好像是你暖壶的声音”他仔细一听，随即就把暖壶扔了出去，就听见暖壶的爆炸声，这货转回来对我说 幸好我扔的快。我……&lt;/p&gt;
+&lt;h2 id="56d658"&gt;还是以学习为重吧&lt;/h2&gt;
+&lt;p&gt;初中的时候，我一女同学不懂事，觉得班里那些不爱学习的非主流小混混很帅，还暗恋一个，那个也不怎么爱上课，作业不写，考试成绩也是倒数，整天无所事事，但确实长得蛮帅的，同学也是真心喜欢他，最后我也没能拦住她，她还是去告白了，我就听到了最扯的拒绝理由，那男的说“我们还是以学习为重吧。。。”&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Thu, 27 Mar 2014 17:40:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-03-27:collection/qiushibaike4.html</guid><category>糗事百科</category><category>笑话</category><category>转载</category></item><item><title>2014年动漫新番整理</title><link>http://suxing304.github.io/collection/2014-cartoons.html</link><description>&lt;p&gt;收集最近看过的动漫，不断积累中。&lt;/p&gt;
+&lt;p&gt;部分动漫的OP/ED，歌曲来自虾米。&lt;/p&gt;
+&lt;p&gt;
+&lt;div class="hermit" xiami="collect:31273902" netease="" loop="1" auto="0"&gt;
+    &lt;div class="hermit-box"&gt;
+        &lt;div class="hermit-controls"&gt;
+            &lt;div class="hermit-button"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-detail"&gt;
+                单击鼠标左键播放或暂停
+            &lt;/div&gt;
+            &lt;div class="hermit-duration"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-volume"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-listbutton"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="hermit-prosess"&gt;
+            &lt;div class="hermit-loaded"&gt;
+            &lt;/div&gt;
+            &lt;div class="hermit-prosess-bar"&gt;
+                &lt;div class="hermit-prosess-after"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="hermit-list" style=""&gt;
+    &lt;/div&gt;
+    &lt;div class="hermit-add-list" style=""&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2 id="3d6dd8"&gt;属性同好会&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="属性同好会" src="/static/images/cartoon/ShuXingTongHaoHui.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;吐槽很犀利&lt;/p&gt;
+&lt;h2 id="6a64e5"&gt;魔女的使命&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="魔女的使命" src="/static/images/cartoon/MoNvDeShiMing.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="魔女的使命" src="/static/images/cartoon/MoNvDeShiMing1.jpg"/&gt;
+兽耳娘一伙很呆很萌&lt;/p&gt;
+&lt;p&gt;&lt;img alt="兽耳娘一伙KTV庆祝" src="/static/images/cartoon/MoNvDeShiMing2.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;截图1: 兽耳娘一伙KTV庆祝&lt;/p&gt;
+&lt;p&gt;&lt;img alt="兽耳娘考试用望远镜作弊" src="/static/images/cartoon/MoNvDeShiMing3.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;截图2: 兽耳娘考试用望远镜作弊&lt;/p&gt;
+&lt;h2 id="3a42da"&gt;世界征服 谋略的星辰&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="世界征服 谋略的星辰" src="/static/images/cartoon/ShiJieZhengFuMouLueDeXingChen.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;星宫凯特的声音太特别了&lt;/p&gt;
+&lt;p&gt;&lt;img alt="世界征服 谋略的星辰" src="/static/images/cartoon/ShiJieZhengFuMouLueDeXingChen1.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;@TODO 凯特未变身状态截图&lt;/p&gt;
+&lt;h2 id="f0c199"&gt;倒不了的塔第一季&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="倒不了的塔" src="/static/images/cartoon/DaoBuLiaoDeTaS1.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;罕见的国产良心作品，看得出来制作非常用心，逗乐方面也没有靠滥俗的网络流行词撑场面，其中娃犀利的配音和台词都非常高明，总让人忍不住要喷饭。其实第一季在2013年就发布了，只是最近才无意间发现，差点就错过了的说。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="倒不了的塔" src="/static/images/cartoon/DaoBuLiaoDeTaS1_1.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;另外，吐嘈下主题曲，真的不好听。&lt;/p&gt;
+&lt;h2 id="2b4b59"&gt;如果她的旗帜被折断了&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="如果她的旗帜被折断了" src="/static/images/cartoon/RuGuoTaDeQiZhiBeiZheDuanLe.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="如果她的旗帜被折断了" src="/static/images/cartoon/RuGuoTaDeQiZhiBeiZheDuanLe2.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;至今不晓得是男是女。&lt;/p&gt;
+&lt;h2 id="62b903"&gt;极黑的布伦希尔特&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="极黑的布伦希尔特" src="/static/images/cartoon/JiHeiDeBuLunXiErTe.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="text-muted"&gt;图片取自&lt;a href="http://www.vap.co.jp/gokukoku/"&gt;http://www.vap.co.jp/gokukoku/&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id="4758f4"&gt;棺姬嘉依卡&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="棺姬嘉依卡" src="/static/images/cartoon/GuanJiJiaYiKa.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="60f544"&gt;噬魂师NOT&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="噬魂师NOT" src="/static/images/cartoon/ShiHunShiNot.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="text-muted"&gt;图片取自&lt;a href="http://www.souleaternot.tv/"&gt;http://www.souleaternot.tv/&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id="edfecb"&gt;漆黑的子弹&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="漆黑的子弹" src="/static/images/cartoon/QiHeiDeZiDan.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="6f276e"&gt;东京食尸鬼&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="东京食尸鬼" src="/static/images/cartoon/DongJingShiShiGui.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="730358"&gt;Rail Wars!&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Rail Wars!" src="/static/images/cartoon/RailWars.jpg"/&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Tue, 25 Mar 2014 20:26:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-03-25:collection/2014-cartoons.html</guid><category>动漫</category><category>新番</category><category>音乐</category><category>未完成</category></item><item><title>65个待办事项 X</title><link>http://suxing304.github.io/life/65-todos.html</link><description>&lt;p&gt;一直在用doit.im管理待办事项，话说这个东东确实挺好用的，界面比较友好，支持的平台也多，还有短信提醒功能。X，跑题了。&lt;/p&gt;
+&lt;p&gt;今天一早打开doit.im一看，今日待办的列表里赤果果躺着&lt;strong&gt;65&lt;/strong&gt;个待办事项，鼠标滚轮转了好几圈才见底。其中，最早的一个未完成事项还是去年11月底的，也就是说拖了快4个月。 &lt;/p&gt;
+&lt;p&gt;仔细梳理了一下这65个待办事项，有7个日常琐事，4个娱乐事项，5个开源项目，剩下的基本都是需要解决的IT问题和需要总结的IT知识。我估计自己已经拖延症晚期了。&lt;/p&gt;
+&lt;p&gt;这几个月基本算是荒废了，虽然一直都很明白少壮不努力的道理，可就是提不起干劲来。从高中毕业开始，我的一切主观努力都是靠兴趣驱动，有兴趣的事情我会熬夜做到我心中的完美状态，没有兴趣的事情基本不会多看一眼（除非逼不得已，比如考试）。&lt;/p&gt;
+&lt;p&gt;大学有位朋友信命，他说一切皆是命中注定，包括正在做的事情和不想做这种心理状态。对此我无力反驳，因为我是个没有信仰的人。&lt;/p&gt;
+&lt;p&gt;进入大学后，相比高中的魔鬼时代，老师和父母对我的管束态度可以说是180度大转弯。高中时代，学校实行的是类军事化管理，除星期天外严格限制外出，每天被功课撑到爆，我就像一只圈养的家鸡，毫无自由可言。大学时代，老师不再盯着你的屁股关心你用功了没有，父母离得也远。我就像一只生活在保护区的野鸡，除了每个学期末的考试还有些让人提心吊胆之外，算是第一次呼吸到了传说中自由的味道。而工作之后，现在的我可以算的上是个完全的自由人了，我总觉得自己像一只在蔚蓝天空里自由翱翔的野鸟，爱干嘛干嘛，没人管也没人烦。&lt;/p&gt;
+&lt;p&gt;上面罗嗦了很多和本文不相关的话，其实我想说的是，在度过了1年半完全自由的生活后，我发现自由对我这样毫无信仰的懒人来说并不见得是一件好事。为了将来着想，我得想办法对自己狠一点。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Tue, 18 Mar 2014 10:22:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-03-18:life/65-todos.html</guid><category>todo</category><category>自由</category></item><item><title>搬家至DigitalOcean</title><link>http://suxing304.github.io/life/trying-digitalocean-vps.html</link><description>&lt;p&gt;因为一些&lt;a href="/life/thinking-about-moving-away-from-linode.html"&gt;很恶心的原因&lt;/a&gt;，这几天将vps搬到了DigitalOcean。事实再次证明，盲信权威和无脑随大流是不可取的，我不会再迷信Linode了。&lt;/p&gt;
+&lt;p&gt;用的是DigitalOcean最便宜的一款plan，每月只要30元RMB。虽然内存只有512M，但已然够用了，其他资源根本用不完的说。系统用的是Debian 7，奇怪的是没有自动创建交换空间，只好参考&lt;a href="https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04"&gt;How To Add Swap on Ubuntu 12.04&lt;/a&gt;自己创建Swap Space。&lt;/p&gt;
+&lt;p&gt;已经试用了一天，就目前看来，除了有时候网络延迟偏高之外，其他的一切都还不错。现在编译博客只要5秒左右，四分之一的价格，四分之一的时间&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;。用UnixBench 5.1.3测了一下，得分1374.6，应该算比较正常，完整报告在&lt;a href="/static/plain/digitalocean-512m-unixbench-report-20140313.txt"&gt;这里&lt;/a&gt;。之前我那台Linode 1g的测试结果在&lt;a href="/static/plain/linode-1g-unixbench-report-20140126.txt"&gt;这里&lt;/a&gt;，有兴趣的话可以围观一下。&lt;/p&gt;
+&lt;h2 id="679a94"&gt;2014-03-18 更新&lt;/h2&gt;
+&lt;p&gt;用的是DigitalOcean的旧金山机房，ping一下，rtt基本在350ms左右，偶尔会飙到500ms，甚至1000ms+，这就是便宜的代价了。&lt;/p&gt;
+&lt;p&gt;用traceroute测了下，发现延迟主要在中国骨干网到美国这一段上，也不知道时间是花在穿越海底光缆上还是花在撞墙上了。&lt;/p&gt;
+&lt;p&gt;分别ping了下旧金山机房和新加坡机房，结果如下：&lt;/p&gt;
+&lt;p&gt;旧金山机房&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;--- speedtest-sfo1.digitalocean.com ping statistics ---
+132 packets transmitted, 127 received, 3% packet loss, time 745077ms
+rtt min/avg/max/mdev = 193.340/403.047/1632.058/197.717 ms, pipe 2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;新加坡机房&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;--- speedtest-sgp1.digitalocean.com ping statistics ---
+148 packets transmitted, 127 received, 14% packet loss, time 730138ms
+rtt min/avg/max/mdev = 212.559/261.530/518.302/49.652 ms
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;从测试结果看，新加坡机房的rtt小一些，但丢包率有点吓人，先迁移过去试几天。&lt;/p&gt;
+&lt;p&gt;迁到新加坡机房后，感觉网速半斤八两，暂时就这样了。&lt;/p&gt;
+&lt;h2 id="30d3b7"&gt;2014-03-20 更新&lt;/h2&gt;
+&lt;p&gt;今天抽空又ping了下sfo1和sgp1两个机房，得到的结果和前天的正好相反，具体结果也懒得贴了。用在线的&lt;a href="http://www.webkaka.com/Tracert.aspx"&gt;tracert服务&lt;/a&gt;测了下两个机房，发现从中国访问新加坡机房，不管是走电信还是联通的网络，都得先从美国绕一圈。&lt;/p&gt;
+&lt;p&gt;正在考虑迁回sfo1机房，X，就不能省点儿心。说起来还是怪自己，功课没做好就下了手，太草率了。&lt;/p&gt;
+&lt;h2 id="ad37f3"&gt;2014-03-21 更新&lt;/h2&gt;
+&lt;p&gt;昨晚迁回sfo1后，网络果断抽了，丢包率一度高达73%，今天一早看了下，又正常了。。。&lt;/p&gt;
+&lt;h2 id="73a760"&gt;2014-05-15 更新&lt;/h2&gt;
+&lt;p&gt;最近感觉在vps执行命令，远程编辑文件都流畅了许多（以前卡的那叫一个蛋疼），白天的时候ping了下，我这边是上海电信的线路，结果如下，貌似平均延迟比之前好了不少。&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;--- speedtest-sfo1.digitalocean.com ping statistics ---
+306 packets transmitted, 305 received, 0% packet loss, time 305646ms
+rtt min/avg/max/mdev = 207.885/225.128/387.930/26.514 ms
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;再看了下新加坡机房的，丢包率依然处于生活不能自理的状态&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;--- speedtest-sgp1.digitalocean.com ping statistics ---
+281 packets transmitted, 211 received, 24% packet loss, time 280651ms
+rtt min/avg/max/mdev = 164.564/218.554/312.690/40.736 ms
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="f1b13a"&gt;2014-05-26 更新&lt;/h2&gt;
+&lt;p&gt;博客已&lt;a href="/life/moving-blog-back-to-china.html"&gt;备案并迁往阿里云服务器&lt;/a&gt;。&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr/&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;吐槽见&lt;a href="/life/thinking-about-moving-away-from-linode.html"&gt;此&lt;/a&gt; &lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Thu, 13 Mar 2014 09:35:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-03-13:life/trying-digitalocean-vps.html</guid><category>digitalocean</category><category>linode</category><category>vps</category></item><item><title>没有永远免费的午餐</title><link>http://suxing304.github.io/life/no-free-lunch.html</link><description>&lt;p&gt;各种事实一再的提醒我们，世上没有永远免费的午餐，不要把所有的鸡蛋放到一个篮子里。&lt;/p&gt;
+&lt;p&gt;以上纯吐槽。&lt;/p&gt;
+&lt;p&gt;话说前几天收到一封yunio网盘发来的一封邮件，以下是内节选，详细内容见&lt;a href="http://blog.yunio.com/updates-to-payment-policy-and-member-discounts/"&gt;此&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;基于商业运作及提升服务目的和对于核心用户群的专注，我们将不再继续保留免费账户。原有免费用户和新注册用户可以选择升级成 VIP 用户，继续享有当前及未来更多服务。具体实施步骤是：从3月3日开始，将暂停免费账户的注册。原免费用户如果暂无升级打算，可选择在此期间对个人数据进行备份保存；4月1日起，未升级为付费用户的账户，将无法继续使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;看样子，4月1日之后免费用户的存储内容将无法访问了，而且根据他们的最新&lt;a href="http://blog.yunio.com/payment-adjustment-and-vip-discount/"&gt;付费政策调整&lt;/a&gt;，vip用户的收费价格也大幅上涨。看样子人家是要专心做海外市场了。&lt;/p&gt;
+&lt;p&gt;其实当初Google Reader停止服务的时候，就该明白，哪有什么永久免费的服务！！&lt;/p&gt;
+&lt;p&gt;最近稍微有点忙的说，都写了好几天了，今天才发出来。&lt;/p&gt;
+&lt;h2 id="679a94"&gt;2014-03-18 更新&lt;/h2&gt;
+&lt;p&gt;看了网友的回复后试了下坚果云，感觉还挺好的，不过考虑到将来可能有停止服务的风险，不打算用。官方提供linux客户端的网盘厂商就那么两三家，目前在用dropbox，虽然空间小了些（只有18g的说），估计也够用了。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Fri, 07 Mar 2014 14:15:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-03-07:life/no-free-lunch.html</guid><category>免费</category></item><item><title>有趣的东东</title><link>http://suxing304.github.io/collection/funny-things.html</link><description>&lt;h2 id="c4a806"&gt;ProblemFactory&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="ProblemFactory" src="/static/images/fun/problem-factory.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="text-muted"&gt;图片取自&lt;a href="http://harmful.cat-v.org/software/java"&gt;http://harmful.cat-v.org/software/java&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id="f431de"&gt;海獭妈妈和她的孩子&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="海獭妈妈和她的孩子" src="/static/images/fun/sea-otter-mum-pup.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="text-muted"&gt;图片取自&lt;a href="http://www.montereybayaquarium.org/conservation/research/saving-sea-otters"&gt;Saving Sea Otters&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id="1c817a"&gt;如何证明自己不在「楚门的世界」里&lt;/h2&gt;
+&lt;p&gt;看到知乎上的一个问题，&lt;a href="http://www.zhihu.com/question/21355829"&gt;如何证明自己不在「楚门的世界」里&lt;/a&gt;，有一个回答我觉得最靠谱:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;活了二十多年还没谈过恋爱观众能同意吗？？！！ &lt;/p&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Thu, 20 Feb 2014 14:55:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-02-20:collection/funny-things.html</guid><category>有趣</category></item><item><title>一些值得品味的话</title><link>http://suxing304.github.io/collection/famous-sayings.html</link><description>&lt;p&gt;收集一些名人名言或者是网络上颇有哲理的段子，无聊时看看。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大多数人在20到30岁就已经过完自己的一生。一过了这个年龄段, 他们就变成自己的影子, 以后的生命只是在不断重复自己。
+&lt;footer class="text-right"&gt;出自《约翰·克里斯朵夫》罗曼.罗兰&lt;/footer&gt;&lt;/p&gt;
+&lt;p&gt;要清楚的知道，任何人做出某种选择的同时，就等于选择了相应的后果，不论自己愿不愿意。
+&lt;footer class="text-right"&gt;出自 网络&lt;/footer&gt;&lt;/p&gt;
+&lt;p&gt;一个人可以做也可以不做的事情很多，有些尽管应该做，但需要他自己付出一定的代价，只要他为你做了，你就应该感激。
+&lt;footer class="text-right"&gt;出自 网络&lt;/footer&gt;&lt;/p&gt;
+&lt;p&gt;生活中的一个个挫折，就像冰糖葫芦一样，竹竿刺进了身体，却成为了一生的脊梁。
+&lt;footer class="text-right"&gt;出自 网络&lt;/footer&gt;&lt;/p&gt;
+&lt;p&gt;种一棵树最好的时间是十年前，其次是现在。
+&lt;footer class="text-right"&gt;谚语&lt;/footer&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Tue, 18 Feb 2014 12:59:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-02-18:collection/famous-sayings.html</guid><category>名言</category><category>转载</category><category>未完成</category></item><item><title>有趣的404页面</title><link>http://suxing304.github.io/collection/funny-404-collections.html</link><description>&lt;p&gt;收集网络上一些有趣的404页面。&lt;/p&gt;
+&lt;h2 id="f25cb1"&gt;StackExchange&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="fail panda" src="/static/images/fun/fail-panda.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackexchange.com/site-not-found"&gt;http://stackexchange.com/error&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="no pandas here" src="/static/images/fun/no-pandas-here.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackexchange.com/404"&gt;http://stackexchange.com/404&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="panda huh" src="/static/images/fun/panda-huh.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackexchange.com/site-not-found"&gt;http://stackexchange.com/site-not-found&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="e1adbc"&gt;Github&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="octocat" src="/static/images/misc/github-404page-20140214.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://github.com/404"&gt;http://github.com/404&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Wed, 12 Feb 2014 08:55:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-02-12:collection/funny-404-collections.html</guid><category>404</category><category>有趣</category><category>收集</category></item><item><title>网络用语收集和总结</title><link>http://suxing304.github.io/collection/internet-idioms.html</link><description>&lt;p&gt;收集一些常见的网络用语。&lt;/p&gt;
+&lt;h2 id="534ec6"&gt;新词&lt;/h2&gt;
+&lt;h3 id="5c9072"&gt;N次元&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;二次元: ACG世界&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
+&lt;li&gt;三次元: 现实世界&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
+&lt;li&gt;2.5次元: 介于二次元和三次元之间的世界&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="7912e7"&gt;不明觉厉&lt;/h3&gt;
+&lt;p&gt;”虽不明，但觉厉“。虽然不明白对方在说什么，但是感觉很厉害的样子&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id="fef099"&gt;NTR&lt;/h3&gt;
+&lt;p&gt;睡了别人的对象&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref" href="#fn:5" rel="footnote"&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id="f3aefd"&gt;捡肥皂&lt;/h3&gt;
+&lt;p&gt;有时指入狱&lt;sup id="fnref:6"&gt;&lt;a class="footnote-ref" href="#fn:6" rel="footnote"&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;sup id="fnref:7"&gt;&lt;a class="footnote-ref" href="#fn:7" rel="footnote"&gt;7&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h2 id="34e4a4"&gt;旧词新解&lt;/h2&gt;
+&lt;p&gt;已有词语另解或谐音。&lt;/p&gt;
+&lt;h3 id="4d7a79"&gt;不约而同&lt;/h3&gt;
+&lt;p&gt;因为太久没有和异性约会而变成同性恋。&lt;/p&gt;
+&lt;h3 id="857aa1"&gt;无妻徒刑&lt;/h3&gt;
+&lt;p&gt;。。。&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr/&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;萌娘百科:&lt;a href="http://zh.moegirl.org/%E4%BA%8C%E6%AC%A1%E5%85%83"&gt;二次元&lt;/a&gt;，引用于2014-03-20。 &lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;萌娘百科:&lt;a href="http://zh.moegirl.org/%E4%B8%89%E6%AC%A1%E5%85%83"&gt;三次元&lt;/a&gt;，引用于2014-03-20。 &lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;萌娘百科:&lt;a href="http://zh.moegirl.org/2.5%E6%AC%A1%E5%85%83"&gt;2.5次元&lt;/a&gt;，引用于2014-03-20。 &lt;a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:4"&gt;
+&lt;p&gt;互动百科:&lt;a href="http://www.baike.com/wiki/%E4%B8%8D%E6%98%8E%E8%A7%89%E5%8E%89"&gt;不明觉厉&lt;/a&gt;，引用于2014-03-20。 &lt;a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:5"&gt;
+&lt;p&gt;萌娘百科:&lt;a href="http://zh.moegirl.org/NTR"&gt;NTR&lt;/a&gt;，引用于2014-03-20。 &lt;a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:6"&gt;
+&lt;p&gt;萌娘百科:&lt;a href="http://zh.moegirl.org/%E6%8D%A1%E8%82%A5%E7%9A%82"&gt;捡肥皂&lt;/a&gt;，引用于2014-03-20。 &lt;a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 6 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:7"&gt;
+&lt;p&gt;百度百科:&lt;a href="http://baike.baidu.com/view/10695412.htm"&gt;捡肥皂&lt;/a&gt;，引用于2014-03-20。 &lt;a class="footnote-backref" href="#fnref:7" rev="footnote" title="Jump back to footnote 7 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Su</dc:creator><pubDate>Tue, 28 Jan 2014 17:10:00 +0800</pubDate><guid>tag:suxing304.github.io,2014-01-28:collection/internet-idioms.html</guid><category>总结</category></item></channel></rss>
